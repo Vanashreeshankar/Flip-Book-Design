@@ -1,0 +1,1262 @@
+/* =========================================================
+   PREMIUM MATERIAL PASS
+   The wave geometry and book proportions are intentionally unchanged.
+   Bronze is built as a visible dark-metallic base + restrained reflection
+   + fine leather grain. The global grain is kept low so it cannot muddy
+   the bronze into black-brown.
+   ========================================================= */
+
+/* =========================================================
+   COVER — VISUAL LAYER
+   Flip / page / click behaviour is untouched.
+   ========================================================= */
+
+.cover {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.35s cubic-bezier(.22, .61, .36, 1);
+}
+
+/* =========================================================
+   COVER FACES
+   ========================================================= */
+
+.cover__front,
+.cover__back {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 10px;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+.cover__front {
+    display: block;
+    background: radial-gradient(circle at 42% 38%, #0A4A4D 0%, #063F44 52%, #032F34 100%) !important;
+    isolation: isolate;
+    container-type: inline-size;
+
+    box-shadow:
+        0 28px 46px rgba(14, 8, 4, .34),
+        0 9px 17px rgba(14, 8, 4, .20),
+        inset 0 0 0 1px rgba(255,255,255,.055),
+        inset 0 -8px 20px rgba(20, 8, 3, .10);
+}
+
+/*
+   A real solid layer sits below the copper artwork.
+   This prevents transparency / inherited page lighting from
+   creating a second teal tone inside the cover artwork.
+*/
+.cover__teal-base {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background: radial-gradient(circle at 42% 38%, #0A4A4D 0%, #063F44 52%, #032F34 100%) !important;
+    opacity: 1 !important;
+    pointer-events: none;
+}
+
+/* Fine leather variation over the solid teal field. */
+
+
+/* =========================================================
+   PHYSICAL BOOK-CLOTH / LEATHER WEAVE
+   ========================================================= */
+
+
+
+/* Physical dark spine / edge on the left side of the cover. */
+.cover__front::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 5.2%;
+    z-index: 7;
+    pointer-events: none;
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0, 12, 14, .84) 0%,
+            rgba(3, 39, 42, .64) 32%,
+            rgba(16, 81, 82, .26) 70%,
+            rgba(0, 20, 22, .05) 100%
+        );
+    border-right: 1px solid rgba(181, 137, 79, .50);
+    box-shadow:
+        inset -3px 0 5px rgba(0, 0, 0, .42),
+        inset 2px 0 4px rgba(255, 255, 255, .06),
+        3px 0 7px rgba(0, 0, 0, .12);
+}
+
+/* Subtle debossed / leather depth on the front face. */
+.cover__front::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    pointer-events: none;
+    border-radius: 10px;
+
+    background:
+        radial-gradient(
+            ellipse at 22% 18%,
+            rgba(255,255,255,.075) 0%,
+            transparent 35%
+        ),
+        radial-gradient(
+            ellipse at 78% 84%,
+            rgba(0,0,0,.20) 0%,
+            transparent 48%
+        );
+
+    box-shadow:
+        inset 0 0 0 1px rgba(255, 213, 147, .10),
+        inset 0 0 34px rgba(0, 0, 0, .28),
+        inset 6px 0 14px rgba(0, 0, 0, .10),
+        inset -5px 0 12px rgba(0, 0, 0, .09);
+}
+
+
+
+ /* =========================================================
+   PHYSICAL LEATHER RELIEF
+   ========================================================= */
+
+
+
+.cover__leather-surface {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+    border-radius: 10px;
+    opacity: .22;
+    mix-blend-mode: soft-light;
+    transform: translateZ(0);
+}
+
+/* =========================================================
+   COPPER ORGANIC WAVE
+   ========================================================= */
+
+.cover__copper {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    display: block;
+    pointer-events: none;
+
+    filter: none;
+}
+
+/* Premium bronze depth: a restrained edge vignette, not a color wash. */
+.cover__copper {
+    filter:
+        drop-shadow(0 0 0 rgba(0,0,0,0))
+        saturate(.92)
+        contrast(1.035);
+}
+
+/* A very restrained varnish/leather sheen. It gives the cover a physical
+   coated feel instead of making it look like a flat digital rectangle. */
+/* =========================================================
+   COPPER SURFACE MICRO-TEXTURE
+   ========================================================= */
+
+
+
+/* =========================================================
+   COPPER FOIL / LEATHER RELIEF
+   ========================================================= */
+
+.cover__copper-relief {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    pointer-events: none;
+    opacity: .15;
+    mix-blend-mode: soft-light;
+    transform: translateZ(0);
+}
+
+/* =========================================================
+   MATERIAL SHEEN
+   ========================================================= */
+
+.cover__material-sheen {
+    position: absolute;
+    inset: 0;
+    z-index: 4;
+    pointer-events: none;
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            112deg,
+            transparent 0%,
+            rgba(255,255,255,.015) 25%,
+            rgba(255,255,255,.065) 39%,
+            rgba(255,255,255,.018) 47%,
+            transparent 59%
+        ),
+        linear-gradient(
+            90deg,
+            transparent 0%,
+            transparent 57%,
+            rgba(216,154,91,.075) 73%,
+            rgba(255,218,167,.025) 82%,
+            transparent 100%
+        ),
+        radial-gradient(
+            ellipse at 47% 4%,
+            rgba(255,255,255,.065) 0%,
+            transparent 34%
+        );
+
+    mix-blend-mode: screen;
+    opacity: .17;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.08),
+        inset 0 -1px 0 rgba(0,0,0,.12);
+}
+
+/* =========================================================
+   GOLD INNER FRAME
+   ========================================================= */
+
+.cover__frame {
+    position: absolute;
+    inset: 19px;
+    z-index: 5;
+    pointer-events: none;
+
+    border: 1px solid #C49A5A;
+
+    box-shadow:
+        inset 0 0 0 1px rgba(255, 225, 164, .20),
+        inset 0 0 4px rgba(111, 56, 18, .16),
+        inset 0 1px 0 rgba(255, 242, 198, .18),
+        0 0 4px rgba(216, 154, 80, .12),
+        0 1px 2px rgba(30, 12, 2, .20);
+}
+
+.cover__frame::before {
+    content: "";
+    position: absolute;
+    inset: 8px;
+    border: 1px solid #A97D46;
+    box-shadow:
+        inset 0 0 0 1px rgba(255, 220, 160, .08);
+}
+
+.cover__frame::after {
+    display: none !important;
+    content: none !important;
+    background: none !important;
+    animation: none !important;
+}
+
+
+
+
+.cover__corner::before {
+    width: 8px;
+    height: 8px;
+    border: 1px solid #B8894E;
+    transform: rotate(45deg);
+}
+
+.cover__corner::after {
+    width: 14px;
+    height: 1px;
+    background: #D0A567;
+    box-shadow: 0 0 2px rgba(255, 216, 150, .35);
+}
+
+/* Put the little engraved mark toward the frame interior. */
+.cover__corner--tl::before { top: 4px; left: 4px; }
+.cover__corner--tr::before { top: 4px; right: 4px; }
+.cover__corner--bl::before { bottom: 4px; left: 4px; }
+.cover__corner--br::before { bottom: 4px; right: 4px; }
+
+.cover__corner--tl::after { top: 10px; left: 7px; transform: rotate(45deg); }
+.cover__corner--tr::after { top: 10px; right: 7px; transform: rotate(-45deg); }
+.cover__corner--bl::after { bottom: 10px; left: 7px; transform: rotate(-45deg); }
+.cover__corner--br::after { bottom: 10px; right: 7px; transform: rotate(45deg); }
+
+/* =========================================================
+   CENTRAL EMBLEM
+   ========================================================= */
+
+.cover__emblem {
+    position: absolute;
+    top: 29%;
+    left: 50%;
+    width: 62px;
+    height: 62px;
+    z-index: 6;
+    transform: translate(-50%, -50%);
+    color: #D8B06B;
+
+    filter:
+        drop-shadow(0 1px 1px rgba(0, 0, 0, .45))
+        drop-shadow(0 0 4px rgba(255, 207, 113, .25));
+}
+
+.cover__emblem::before {
+    display: none !important;
+}
+
+.cover__diamond {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    box-sizing: border-box;
+    border: 1.5px solid #D8B06B;
+
+    box-shadow:
+        0 0 1px #FFF0BD,
+        0 1px 1px rgba(60, 30, 8, .55);
+}
+
+.cover__diamond--outer {
+    width: 40px;
+    height: 40px;
+}
+
+.cover__diamond--middle {
+    width: 28px;
+    height: 28px;
+}
+
+.cover__diamond--inner {
+    width: 14px;
+    height: 14px;
+}
+
+.cover__emblem-line {
+    position: absolute;
+    background: #D8B06B;
+    opacity: .98;
+    box-shadow: 0 0 2px rgba(255, 222, 157, .50);
+}
+
+.cover__emblem-line--top,
+.cover__emblem-line--bottom {
+    left: 50%;
+    width: 1px;
+    height: 10px;
+    transform: translateX(-50%);
+}
+
+.cover__emblem-line--top { top: 2px; }
+.cover__emblem-line--bottom { bottom: 2px; }
+
+.cover__emblem-line--left,
+.cover__emblem-line--right {
+    top: 50%;
+    width: 10px;
+    height: 1px;
+    transform: translateY(-50%);
+}
+
+.cover__emblem-line--left { left: 2px; }
+.cover__emblem-line--right { right: 2px; }
+
+.cover__emblem-dot {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: #E2BF7D;
+    box-shadow: 0 0 3px rgba(255, 224, 157, .70);
+}
+
+.cover__emblem-dot--top {
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.cover__emblem-dot--right {
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.cover__emblem-dot--bottom {
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.cover__emblem-dot--left {
+    left: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.cover__emblem-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    background: #E8C98A;
+    transform: translate(-50%, -50%) rotate(45deg);
+    box-shadow: 0 0 4px rgba(255, 226, 164, .80);
+}
+
+/* =========================================================
+   TEXT CONTAINER
+   ========================================================= */
+
+.cover__content {
+    position: absolute;
+    inset: 0;
+    z-index: 7;
+    pointer-events: none;
+    user-select: none;
+    text-align: center;
+}
+
+/*
+   Stronger metallic foil.
+   The highlight is brighter and the dark edge gives the letters
+   enough separation when they approach the copper seam.
+*/
+.cover__title,
+.cover__name,
+.cover__year,
+.cover__bottom-diamond,
+.cover__divider b {
+    background:
+        linear-gradient(
+            180deg,
+            #FFF2D1 0%,
+            #EBCB91 17%,
+            #D5A965 35%,
+            #A9783F 51%,
+            #93643A 67%,
+            #D6AE6B 84%,
+            #FFF1C9 100%
+        );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    text-shadow:
+        0 1px 0 rgba(255, 246, 208, .58),
+        0 1px 1px rgba(40, 18, 3, .90),
+        0 2px 3px rgba(20, 8, 2, .38),
+        0 0 5px rgba(255, 202, 91, .12);
+}
+
+/* =========================================================
+   TITLE
+   ========================================================= */
+
+.cover__title {
+    position: absolute;
+    left: 7%;
+    right: 7%;
+    top: 44.5%;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:
+        clamp(
+            1rem,
+            7.15cqw,
+            2.70rem
+        );
+
+    line-height: 1;
+    font-weight: 700;
+    letter-spacing: .018em;
+    white-space: nowrap;
+    text-align: center;
+}
+
+/* =========================================================
+   SUBTITLE
+   ========================================================= */
+
+.cover__subtitle {
+    position: absolute;
+    left: 8%;
+    right: 8%;
+    top: 54.2%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(4px, 1.15cqw, 8px);
+
+    /*
+      Slightly brighter than the title so it reads as a deliberate
+      secondary line instead of disappearing into the copper.
+    */
+    color: #E8C98E;
+
+    font-family:
+        Arial,
+        "Helvetica Neue",
+        sans-serif;
+
+    font-size:
+        clamp(
+            .43rem,
+            2.45cqw,
+            .84rem
+        );
+
+    font-weight: 700;
+    letter-spacing: .075em;
+    line-height: 1.05;
+    white-space: nowrap;
+
+    text-shadow:
+        0 1px 0 rgba(255, 248, 211, .45),
+        0 1px 2px rgba(35, 16, 3, .95),
+        0 0 5px rgba(255, 202, 91, .18);
+}
+
+.cover__subtitle span {
+    color: #DDB774;
+    -webkit-text-fill-color: #DDB774;
+    opacity: 1;
+    text-shadow:
+        0 1px 1px rgba(40, 18, 4, .85),
+        0 0 4px rgba(255, 211, 118, .28);
+}
+
+/* =========================================================
+   DIVIDER
+   ========================================================= */
+
+.cover__divider {
+    position: absolute;
+    left: 50%;
+    top: 61.5%;
+    transform: translateX(-50%);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(5px, 1.6cqw, 9px);
+
+    width:
+        clamp(
+            76px,
+            30cqw,
+            120px
+        );
+}
+
+.cover__divider span {
+    flex: 1;
+    height: 1px;
+    background:
+        linear-gradient(
+            90deg,
+            #A76628,
+            #FFE08A 30%,
+            #D99A43 72%,
+            #A76628
+        );
+    box-shadow:
+        0 0 2px rgba(255, 220, 147, .55);
+}
+
+.cover__divider b {
+    font-family: Georgia, serif;
+    font-size: clamp(8px, 2.5cqw, 13px);
+    font-weight: 500;
+    line-height: 1;
+}
+
+/* =========================================================
+   NAME
+   ========================================================= */
+
+.cover__name {
+    position: absolute;
+    left: 8%;
+    right: 8%;
+    top: 77%;
+
+    font-family:
+        Arial,
+        "Helvetica Neue",
+        sans-serif;
+
+    font-size:
+        clamp(
+            .56rem,
+            2.65cqw,
+            .90rem
+        );
+
+    font-weight: 700;
+    letter-spacing: .13em;
+    white-space: nowrap;
+}
+
+/* =========================================================
+   YEAR
+   ========================================================= */
+
+.cover__year {
+    position: absolute;
+    left: 8%;
+    right: 8%;
+    top: 84%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(6px, 2.1cqw, 11px);
+}
+
+.cover__year span {
+    font-family: Georgia, serif;
+    font-size: clamp(.53rem, 2.1cqw, .72rem);
+}
+
+.cover__year strong {
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:
+        clamp(
+            .65rem,
+            2.7cqw,
+            .92rem
+        );
+
+    font-weight: 600;
+    letter-spacing: .14em;
+}
+
+/* =========================================================
+   BOTTOM DIAMOND
+   ========================================================= */
+
+.cover__bottom-diamond {
+    position: absolute;
+    left: 50%;
+    top: 91%;
+    transform: translateX(-50%);
+
+    font-family: Georgia, serif;
+    font-size: clamp(6px, 1.8cqw, 9px);
+}
+
+/* =========================================================
+   BACK FACE
+   ========================================================= */
+
+.cover__back {
+    transform: rotateY(180deg);
+    background:
+        repeating-linear-gradient(
+            103deg,
+            rgba(255,255,255,.018) 0px,
+            rgba(255,255,255,.018) 1px,
+            transparent 1px,
+            transparent 4px
+        ),
+        radial-gradient(
+            ellipse at 48% 45%,
+            rgba(28, 104, 105, .10),
+            transparent 54%
+        ),
+        #063F44 !important;
+
+    box-shadow:
+        inset 0 0 18px rgba(0, 0, 0, .16),
+        inset 0 1px 0 rgba(255,255,255,.045),
+        0 18px 32px rgba(0, 0, 0, .22);
+}
+
+.cover__back > * {
+    display: none !important;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 700px) {
+    .cover__frame {
+        inset: 13px;
+    }
+
+    .cover__frame::before {
+        inset: 6px;
+    }
+
+    .cover__emblem {
+        top: 29%;
+        left: 50%;
+        width: 52px;
+        height: 52px;
+    }
+
+    .cover__diamond--outer {
+        width: 34px;
+        height: 34px;
+    }
+
+    .cover__diamond--middle {
+        width: 24px;
+        height: 24px;
+    }
+
+    .cover__diamond--inner {
+        width: 11px;
+        height: 11px;
+    }
+
+    .cover__title {
+        top: 44.5%;
+        left: 7%;
+        right: 7%;
+        font-size: 7cqw;
+    }
+
+    .cover__subtitle {
+        top: 54.2%;
+        left: 7%;
+        right: 7%;
+        font-size: 2.3cqw;
+    }
+
+    .cover__name {
+        top: 77%;
+        left: 7%;
+        right: 7%;
+    }
+
+    .cover__year {
+        left: 7%;
+        right: 7%;
+    }
+
+    .cover__divider {
+        left: 50%;
+    }
+
+    .cover__bottom-diamond {
+        left: 50%;
+    }
+}
+
+@media (max-width: 430px) {
+    .cover__frame {
+        inset: 10px;
+    }
+
+    .cover__frame::before {
+        inset: 5px;
+    }
+
+    .cover__emblem {
+        top: 28.5%;
+        left: 50%;
+        width: 48px;
+        height: 48px;
+    }
+
+    .cover__diamond--outer {
+        width: 31px;
+        height: 31px;
+    }
+
+    .cover__diamond--middle {
+        width: 22px;
+        height: 22px;
+    }
+
+    .cover__diamond--inner {
+        width: 10px;
+        height: 10px;
+    }
+
+    .cover__title {
+        top: 44.5%;
+        left: 6%;
+        right: 6%;
+        font-size: 7.1cqw;
+    }
+
+    .cover__subtitle {
+        top: 54.2%;
+        left: 6%;
+        right: 6%;
+        font-size: 2.2cqw;
+        letter-spacing: .05em;
+    }
+
+    .cover__name {
+        top: 77%;
+        left: 6%;
+        right: 6%;
+    }
+
+    .cover__year {
+        left: 6%;
+        right: 6%;
+    }
+
+    .cover__divider {
+        left: 50%;
+    }
+
+    .cover__bottom-diamond {
+        left: 50%;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .cover {
+        transition: none;
+    }
+}
+
+
+/* =========================================================
+   HARD COVER EDGE / BOARD DEPTH
+   ========================================================= */
+
+.cover__front {
+    box-shadow:
+        0 20px 34px rgba(0, 0, 0, .32),
+        0 5px 10px rgba(0, 0, 0, .16),
+        inset 0 0 0 1px rgba(255,255,255,.045);
+}
+
+.cover__back {
+    box-shadow:
+        0 18px 30px rgba(0, 0, 0, .28),
+        inset 0 0 0 1px rgba(255,255,255,.035);
+}
+
+/* =========================================================
+   FINAL GOLD FOIL PASS
+   ---------------------------------------------------------
+   Only the orangish-gold borders, text and decorative marks
+   are shifted toward a richer champagne gold.
+
+   The copper wave, teal material, geometry, emblem and all
+   flip / interaction behaviour remain unchanged.
+   ========================================================= */
+
+/* =========================================================
+   ORNAMENTAL FRAME — TRUE CHAMPAGNE GOLD
+   ========================================================= */
+
+.cover__frame {
+    border-color: #D8B765 !important;
+
+    box-shadow:
+        inset 0 0 0 1px rgba(255, 238, 174, .24),
+        inset 0 0 4px rgba(126, 91, 30, .14),
+        inset 0 1px 0 rgba(255, 245, 202, .28),
+        0 0 4px rgba(224, 191, 103, .14),
+        0 1px 2px rgba(30, 12, 2, .20);
+}
+
+.cover__frame::before {
+    border-color: #CBA653 !important;
+
+    box-shadow:
+        inset 0 0 0 1px rgba(255, 232, 157, .12);
+}
+
+/* =========================================================
+   FRAME CORNER DETAILS — GOLD
+   ========================================================= */
+
+.cover__corner::before {
+    border-color: #D2AE5D !important;
+}
+
+.cover__corner::after {
+    background: #E4C773 !important;
+
+    box-shadow:
+        0 0 2px rgba(255, 231, 157, .42);
+}
+
+/* =========================================================
+   MAIN TEXT — GOLD FOIL
+   ========================================================= */
+
+.cover__title,
+.cover__name,
+.cover__year,
+.cover__bottom-diamond,
+.cover__divider b {
+    background:
+        linear-gradient(
+            180deg,
+            #FFF4C9 0%,
+            #F0D98F 18%,
+            #DDBA61 36%,
+            #C59D45 52%,
+            #D6B45D 68%,
+            #EBD080 84%,
+            #FFF1BC 100%
+        ) !important;
+
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+
+    text-shadow:
+        0 1px 0 rgba(255, 248, 218, .62),
+        0 1px 1px rgba(55, 38, 8, .82),
+        0 2px 3px rgba(30, 18, 3, .30),
+        0 0 5px rgba(255, 220, 119, .10);
+}
+
+/* =========================================================
+   SUBHEADING — GOLD
+   ========================================================= */
+
+.cover__subtitle {
+    color: #E5C875 !important;
+    -webkit-text-fill-color: #E5C875 !important;
+
+    text-shadow:
+        0 1px 0 rgba(255, 248, 216, .48),
+        0 1px 2px rgba(45, 29, 5, .88),
+        0 0 5px rgba(255, 220, 125, .12);
+}
+
+.cover__subtitle span {
+    color: #D9B55D !important;
+    -webkit-text-fill-color: #D9B55D !important;
+
+    text-shadow:
+        0 1px 1px rgba(45, 29, 5, .78),
+        0 0 4px rgba(255, 221, 126, .20);
+}
+
+/* =========================================================
+   DIVIDER — GOLD FOIL
+   ========================================================= */
+
+.cover__divider span {
+    background:
+        linear-gradient(
+            90deg,
+            #B9913D 0%,
+            #F2D98B 30%,
+            #D9B65B 52%,
+            #F1D889 72%,
+            #B9913D 100%
+        ) !important;
+
+    box-shadow:
+        0 0 2px rgba(255, 226, 145, .55);
+}
+
+/* =========================================================
+   YEAR DASHES — GOLD
+   ========================================================= */
+
+.cover__year span {
+    color: #DDBD69 !important;
+    -webkit-text-fill-color: #DDBD69 !important;
+}
+
+/* =========================================================
+   BOTTOM DECORATIVE DIAMOND — GOLD
+   ========================================================= */
+
+.cover__bottom-diamond {
+    filter:
+        drop-shadow(0 1px 1px rgba(40, 24, 4, .55))
+        drop-shadow(0 0 3px rgba(255, 218, 116, .12));
+}
+
+/* =========================================================
+   CENTRAL EMBLEM
+   ---------------------------------------------------------
+   INTENTIONALLY NOT OVERRIDDEN.
+   Existing emblem colors and styling remain unchanged.
+   ========================================================= */
+
+/* =========================================================
+   FINAL VIBRANT GOLD FOIL PASS
+   ---------------------------------------------------------
+   The previous gold was intentionally restrained, but at the
+   actual book scale it reads too muted/beige. This pass makes
+   the typography and ornaments visibly luminous and premium.
+
+   UNCHANGED:
+   - copper wave
+   - teal field
+   - central emblem
+   - geometry / positioning
+   - interaction / flip behaviour
+   ========================================================= */
+
+/* Main cover lettering: brighter, richer metallic gold */
+.cover__title,
+.cover__name,
+.cover__year,
+.cover__bottom-diamond,
+.cover__divider b {
+    background:
+        linear-gradient(
+            180deg,
+            #FFF9D8 0%,
+            #FFEAA0 14%,
+            #FFD45A 31%,
+            #F2B52F 48%,
+            #FFD967 63%,
+            #FFE99A 80%,
+            #FFF8D2 100%
+        ) !important;
+
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+
+    text-shadow:
+        0 1px 0 rgba(255, 250, 218, .90),
+        0 1px 1px rgba(65, 38, 3, .92),
+        0 2px 2px rgba(44, 24, 2, .58),
+        0 0 5px rgba(255, 205, 65, .28),
+        0 0 10px rgba(255, 205, 65, .10);
+}
+
+/* CAPABILITIES gets the strongest foil presence */
+.cover__title {
+    text-shadow:
+        0 1px 0 rgba(255, 252, 225, .95),
+        0 1px 1px rgba(63, 35, 2, .95),
+        0 2px 3px rgba(36, 19, 1, .55),
+        0 0 6px rgba(255, 207, 66, .30),
+        0 0 12px rgba(255, 207, 66, .10);
+}
+
+/* Subtitle: no more pale beige; clean luminous gold */
+.cover__subtitle {
+    color: #FFD45F !important;
+    -webkit-text-fill-color: #FFD45F !important;
+
+    text-shadow:
+        0 1px 0 rgba(255, 249, 213, .90),
+        0 1px 1px rgba(52, 29, 2, .94),
+        0 2px 3px rgba(35, 18, 1, .42),
+        0 0 5px rgba(255, 204, 69, .28);
+}
+
+.cover__subtitle span {
+    color: #F6C84B !important;
+    -webkit-text-fill-color: #F6C84B !important;
+
+    text-shadow:
+        0 1px 1px rgba(48, 27, 2, .90),
+        0 0 5px rgba(255, 210, 83, .30);
+}
+
+/* Divider: brighter foil instead of brown-gold */
+.cover__divider span {
+    background:
+        linear-gradient(
+            90deg,
+            #C99527 0%,
+            #F7C94D 20%,
+            #FFF0A5 38%,
+            #FFD45A 55%,
+            #FFF0A5 72%,
+            #F2BF3C 86%,
+            #C99527 100%
+        ) !important;
+
+    box-shadow:
+        0 0 3px rgba(255, 225, 119, .78),
+        0 0 7px rgba(255, 202, 62, .16);
+}
+
+/* Frame: brighter gold with a subtle foil catch */
+.cover__frame {
+    border-color: #DDB65A !important;
+
+    box-shadow:
+        inset 0 0 0 1px rgba(255, 239, 170, .34),
+        inset 0 0 4px rgba(126, 83, 15, .12),
+        inset 0 1px 0 rgba(255, 249, 207, .42),
+        0 0 5px rgba(231, 190, 77, .20),
+        0 1px 2px rgba(30, 12, 2, .20);
+}
+
+.cover__frame::before {
+    border-color: #CFA747 !important;
+
+    box-shadow:
+        inset 0 0 0 1px rgba(255, 232, 157, .18),
+        0 0 2px rgba(240, 199, 84, .12);
+}
+
+/* Corner ornaments */
+.cover__corner::before {
+    border-color: #D9B65B !important;
+    box-shadow: 0 0 2px rgba(255, 218, 115, .20);
+}
+
+.cover__corner::after {
+    background: #EBC96A !important;
+    box-shadow: 0 0 3px rgba(255, 226, 133, .55);
+}
+
+/* Year dashes inherit a brighter foil treatment */
+.cover__year span {
+    color: #F0C754 !important;
+    -webkit-text-fill-color: #F0C754 !important;
+    text-shadow:
+        0 1px 1px rgba(53, 29, 2, .85),
+        0 0 4px rgba(255, 211, 85, .22);
+}
+
+/* Bottom diamond */
+.cover__bottom-diamond {
+    filter:
+        drop-shadow(0 1px 1px rgba(42, 23, 2, .65))
+        drop-shadow(0 0 5px rgba(255, 210, 76, .22));
+}
+
+/* =========================================================
+   DO NOT ALTER THE CENTRAL EMBLEM
+   ========================================================= */
+
+
+/* =========================================================
+   FRONT-COVER BACKFACE — NATURAL PHYSICAL HINGE / SPINE
+   ---------------------------------------------------------
+   The backface is rotateY(180deg), so the physical spine
+   belongs on the VISUAL RIGHT edge beside the first page.
+
+   The treatment is deliberately soft and integrated:
+   - wider recessed spine
+   - dark outer edge
+   - subtle cloth/leather highlight
+   - restrained gold board line
+   - no hard "drawn-on" stripe
+   ========================================================= */
+
+.cover__back {
+    position: absolute;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+/* Broad recessed spine — dark at the outer edge,
+   gradually disappearing into the teal board. */
+.cover__back::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 27px;
+
+    pointer-events: none;
+    z-index: 8;
+
+  
+
+    box-shadow:
+        inset -1px 0 0 rgba(0, 0, 0, .62),
+        inset 5px 0 8px rgba(255, 255, 255, .025),
+        -4px 0 9px rgba(0, 0, 0, .28),
+        -10px 0 18px rgba(0, 0, 0, .12);
+}
+
+/* Very restrained metallic board/hinge line.
+   It should read as a construction detail, not a bright stripe. */
+.cover__back::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 23px;
+    width: 1px;
+
+    pointer-events: none;
+    z-index: 9;
+
+   
+
+    box-shadow:
+        0 0 2px rgba(255, 220, 126, .18),
+        1px 0 2px rgba(0, 0, 0, .30);
+}
+/* Main recessed cloth/leather hinge */
+.cover__back::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 11px;
+
+    pointer-events: none;
+    z-index: 8;
+
+    
+
+    box-shadow:
+        inset 1px 0 0 rgba(0, 0, 0, .58),
+        inset -1px 0 0 rgba(255, 255, 255, .045),
+        -3px 0 8px rgba(0, 0, 0, .42),
+        -7px 0 13px rgba(0, 0, 0, .17);
+}
+
+/* Fine gold board edge at the hinge */
+.cover__back::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 10px;
+    width: 1px;
+
+    pointer-events: none;
+    z-index: 9;
+
+
+    box-shadow:
+        0 0 2px rgba(255, 218, 121, .34),
+        -1px 0 2px rgba(0, 0, 0, .28);
+}

@@ -1,0 +1,39 @@
+.book__spine {
+    position: absolute;
+
+    left: -4px;
+    top: 4px;
+
+    width: 12px;
+    height: calc(100% - 8px);
+
+    border-radius:
+        10px
+        0
+        0
+        10px;
+
+    background:
+        linear-gradient(
+            to right,
+            #161616,
+            #4c4c4c,
+            #181818
+        );
+
+    box-shadow:
+        inset -2px 0 3px rgba(255, 255, 255, 0.08),
+        inset 2px 0 3px rgba(0, 0, 0, 0.45);
+
+    z-index: 120;
+
+    opacity: 1;
+
+    transition:
+        opacity 0.35s ease;
+}
+
+
+.book__spine--hidden {
+    opacity: 0;
+}

@@ -1,0 +1,696 @@
+/* =========================================================
+   PROLOGUE / INTRO PAGE
+   Editorial magazine layout
+   ========================================================= */
+
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap");
+
+
+/* =========================================================
+   ROOT
+   ========================================================= */
+
+.intro-right {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  overflow: hidden;
+
+  background: #f4f5ef;
+  color: #18383a;
+
+  box-sizing: border-box;
+
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+
+  /*
+    Makes every measurement respond to the actual
+    magazine page width.
+  */
+  container-type: inline-size;
+}
+
+
+/* =========================================================
+   RESET
+   ========================================================= */
+
+.intro-right *,
+.intro-right *::before,
+.intro-right *::after {
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   PAGE
+   ========================================================= */
+
+.intro-page {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   TOP HEADER
+   ========================================================= */
+
+.intro-top {
+  position: absolute;
+
+  top: 7.25%;
+  left: 11.45%;
+  right: 8.3%;
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  min-width: 0;
+}
+
+
+/* =========================================================
+   TOP LEFT
+   ========================================================= */
+
+.intro-top-left {
+  display: flex;
+  align-items: center;
+
+  flex: 1;
+  min-width: 0;
+
+  text-align: left;
+}
+
+
+/* =========================================================
+   PROLOGUE
+   ========================================================= */
+
+.intro-kicker {
+  flex-shrink: 0;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size: clamp(7px, 1.55cqw, 9px);
+
+  font-weight: 600;
+
+  letter-spacing: 0.34em;
+
+  line-height: 1;
+
+  color: #29494a;
+
+  white-space: nowrap;
+
+  text-align: left;
+}
+
+
+/* =========================================================
+   HEADER RULE
+   ========================================================= */
+
+.intro-rule {
+  display: block;
+
+  width: 30%;
+
+  max-width: 116px;
+  min-width: 38px;
+
+  height: 1px;
+
+  margin-left: 4.2%;
+
+  background: rgba(43, 65, 66, 0.42);
+}
+
+
+/* =========================================================
+   TOP RIGHT
+   ========================================================= */
+
+.intro-top-right {
+  flex-shrink: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: flex-end;
+
+  gap: 7px;
+
+  margin-top: -1px;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size: clamp(6px, 1.4cqw, 8px);
+
+  font-weight: 500;
+
+  letter-spacing: 0.32em;
+
+  line-height: 1.05;
+
+  color: #596a6b;
+
+  text-align: right;
+
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   MAIN CONTENT
+   ========================================================= */
+
+.intro-main {
+  position: absolute;
+
+  /*
+    Same vertical starting point as reference.
+  */
+  top: 27.8%;
+
+  /*
+    Same editorial left margin as reference.
+  */
+  left: 11.45%;
+
+  /*
+    Wide enough for the title to breathe.
+  */
+  width: 78%;
+
+  min-width: 0;
+
+  text-align: left;
+}
+
+
+/* =========================================================
+   TITLE
+   ========================================================= */
+
+.intro-title {
+  display: flex;
+  flex-direction: column;
+
+  align-items: flex-start;
+
+  width: 100%;
+
+  margin: 0;
+  padding: 0;
+
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-weight: 400;
+
+  letter-spacing: -0.055em;
+
+  line-height: 0.86;
+
+  text-align: left;
+}
+
+
+/* =========================================================
+   FIRST TITLE LINE
+
+   IMPORTANT:
+   Larger than the previous version because the actual
+   magazine page is much smaller than the reference image.
+   ========================================================= */
+
+.intro-title-main {
+  display: block;
+
+  margin: 0;
+  padding: 0;
+
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: clamp(46px, 17.8cqw, 78px);
+
+  font-weight: 500;
+
+  letter-spacing: -0.058em;
+
+  line-height: 0.86;
+
+  color: #153638;
+
+  white-space: nowrap;
+
+  text-align: left;
+}
+
+
+/* =========================================================
+   SECOND TITLE LINE
+   ========================================================= */
+
+.intro-title-italic {
+  display: block;
+
+  margin: 5px 0 0;
+  padding: 0;
+
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: clamp(43px, 17.2cqw, 75px);
+
+  font-style: italic;
+
+  font-weight: 400;
+
+  letter-spacing: -0.064em;
+
+  line-height: 0.88;
+
+  color: #788386;
+
+  white-space: nowrap;
+
+  text-align: left;
+}
+
+
+/* =========================================================
+   SHORT DIVIDER
+   ========================================================= */
+
+.intro-divider {
+  display: block;
+
+  width: 13.5%;
+
+  max-width: 53px;
+  min-width: 35px;
+
+  height: 2px;
+
+  margin-top: 8.5%;
+
+  background: #183a3c;
+}
+
+
+/* =========================================================
+   DESCRIPTION
+   ========================================================= */
+
+.intro-description {
+  display: block;
+
+  width: 100%;
+
+  margin-top: 6.4%;
+  padding: 0;
+
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  /*
+    Increased considerably from the previous version.
+  */
+  font-size: clamp(16px, 5.05cqw, 25px);
+
+  font-weight: 500;
+
+  letter-spacing: -0.012em;
+
+  line-height: 1.27;
+
+  color: #183c3e;
+
+  text-align: left;
+}
+
+
+/* =========================================================
+   DESCRIPTION PARAGRAPHS
+   ========================================================= */
+
+.intro-description p {
+  display: block;
+
+  margin: 0;
+  padding: 0;
+
+  text-align: left;
+}
+
+
+/* =========================================================
+   SECOND PARAGRAPH
+   ========================================================= */
+
+.intro-description p + p {
+  margin-top: 9.2%;
+}
+
+
+/* =========================================================
+   TURN THE PAGE
+   ========================================================= */
+
+.intro-turn {
+  position: absolute;
+
+  right: 11.2%;
+  bottom: 17.7%;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: flex-end;
+
+  text-align: right;
+}
+
+
+/* =========================================================
+   TURN LABEL
+   ========================================================= */
+
+.intro-turn-label {
+  display: flex;
+  flex-direction: column;
+
+  align-items: flex-end;
+
+  gap: 7px;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size: clamp(6px, 1.45cqw, 8px);
+
+  font-weight: 600;
+
+  letter-spacing: 0.34em;
+
+  line-height: 1;
+
+  color: #29494a;
+
+  text-align: right;
+
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   ARROW
+   ========================================================= */
+
+.intro-arrow {
+  position: relative;
+
+  width: 42px;
+  height: 22px;
+
+  margin-top: 13px;
+}
+
+
+/* =========================================================
+   ARROW LINE
+   ========================================================= */
+
+.intro-arrow-line {
+  position: absolute;
+
+  top: 10px;
+  left: 0;
+
+  width: 35px;
+
+  height: 1px;
+
+  background: #29494a;
+}
+
+
+/* =========================================================
+   ARROW HEAD
+   ========================================================= */
+
+.intro-arrow-head {
+  position: absolute;
+
+  top: 5px;
+  right: 0;
+
+  width: 10px;
+  height: 10px;
+
+  border-top: 1px solid #29494a;
+  border-right: 1px solid #29494a;
+
+  transform: rotate(45deg);
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.intro-footer {
+  position: absolute;
+
+  left: 11.45%;
+  right: 11.45%;
+
+  bottom: 5.35%;
+
+  display: flex;
+  align-items: center;
+
+  gap: clamp(7px, 2.25cqw, 12px);
+
+  padding-top: 3.05%;
+
+  border-top: 1px solid rgba(41, 67, 68, 0.40);
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size: clamp(5.5px, 1.45cqw, 8px);
+
+  font-weight: 600;
+
+  letter-spacing: 0.28em;
+
+  line-height: 1;
+
+  color: #526566;
+
+  white-space: nowrap;
+
+  text-align: left;
+}
+
+
+/* =========================================================
+   FOOTER SEPARATORS
+   ========================================================= */
+
+.intro-footer i {
+  flex-shrink: 0;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-style: normal;
+
+  font-size: 8px;
+
+  color: #718081;
+
+  opacity: 0.7;
+}
+
+
+/* =========================================================
+   SMALL PAGE WIDTH
+   ========================================================= */
+
+@container (max-width: 350px) {
+
+  .intro-top {
+    left: 10%;
+    right: 7%;
+  }
+
+
+  .intro-main {
+    left: 10%;
+    width: 80%;
+
+    text-align: left;
+  }
+
+
+  .intro-title {
+    align-items: flex-start;
+
+    text-align: left;
+  }
+
+
+  .intro-title-main {
+    /*
+      Keep the large editorial scale.
+    */
+    font-size: 17.8cqw;
+  }
+
+
+  .intro-title-italic {
+    font-size: 17.2cqw;
+  }
+
+
+  .intro-description {
+    font-size: 5.05cqw;
+
+    text-align: left;
+  }
+
+
+  .intro-description p {
+    text-align: left;
+  }
+
+
+  .intro-turn {
+    right: 9%;
+  }
+
+
+  .intro-footer {
+    left: 10%;
+    right: 8%;
+
+    gap: 5px;
+
+    letter-spacing: 0.20em;
+  }
+}
+
+
+/* =========================================================
+   VERY SMALL PAGE
+   ========================================================= */
+
+@container (max-width: 280px) {
+
+  .intro-main {
+    top: 27%;
+  }
+
+
+  .intro-title-main {
+    font-size: 17.2cqw;
+  }
+
+
+  .intro-title-italic {
+    font-size: 16.7cqw;
+  }
+
+
+  .intro-description {
+    font-size: 4.8cqw;
+  }
+
+
+  .intro-divider {
+    margin-top: 8%;
+  }
+}
+
+
+/* =========================================================
+   SHORT HEIGHT
+   ========================================================= */
+
+@media (max-height: 650px) {
+
+  .intro-main {
+    top: 25.5%;
+  }
+
+
+  .intro-turn {
+    bottom: 16%;
+  }
+
+
+  .intro-footer {
+    bottom: 5%;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .intro-right *,
+  .intro-right *::before,
+  .intro-right *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

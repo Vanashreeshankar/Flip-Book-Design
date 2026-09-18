@@ -1,0 +1,393 @@
+/* =========================================================
+   3D MOTION DESIGN — RIGHT PAGE
+   ========================================================= */
+
+.motion-right {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  overflow: hidden;
+
+  background: #2a1118;
+
+  color: #ffffff;
+
+  isolation: isolate;
+}
+
+
+/* =========================================================
+   DARK / BURGUNDY ATMOSPHERE
+   ========================================================= */
+
+.motion-right-glow {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 0;
+
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      ellipse at 50% 48%,
+      rgba(155, 58, 88, 0.48) 0%,
+      rgba(111, 36, 61, 0.34) 30%,
+      rgba(70, 22, 37, 0.18) 52%,
+      rgba(42, 17, 24, 0) 76%
+    );
+}
+
+
+/* =========================================================
+   VIGNETTE
+   ========================================================= */
+
+.motion-right-vignette {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 8;
+
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.18),
+      transparent 18%,
+      transparent 82%,
+      rgba(0, 0, 0, 0.18)
+    );
+
+  box-shadow:
+    inset 0 0 100px rgba(0, 0, 0, 0.30);
+}
+
+
+/* =========================================================
+   SPLINE CONTAINER
+   ========================================================= */
+
+.spline-container {
+  position: absolute;
+
+  top: 5%;
+  right: 0;
+  bottom: 5%;
+  left: 0;
+
+  z-index: 2;
+
+  overflow: hidden;
+
+  background: transparent;
+
+  border: 0;
+
+  outline: 0;
+
+  pointer-events: auto;
+}
+
+
+/* =========================================================
+   SPLINE VIEWER
+   ========================================================= */
+
+.spline-container spline-viewer {
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  background: transparent !important;
+
+  border: 0;
+
+  outline: 0;
+
+  transform:
+    translate(-50%, -50%)
+    scale(1.5);
+
+  transform-origin: center center;
+}
+
+
+/* =========================================================
+   TOP LEFT
+   ========================================================= */
+
+.motion-right-top-left {
+  position: absolute;
+
+  top: 6.5%;
+  left: 10.5%;
+
+  z-index: 20;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-start;
+
+  pointer-events: none;
+}
+
+
+.motion-right-top-left span {
+  font-family: Arial, sans-serif;
+
+  font-size: 7px;
+
+  line-height: 1.9;
+
+  letter-spacing: 0.46em;
+
+  white-space: nowrap;
+}
+
+
+.motion-right-top-left i {
+  display: block;
+
+  width: 39px;
+  height: 1px;
+
+  margin-top: 13px;
+
+  background: rgba(255, 255, 255, 0.65);
+}
+
+
+/* =========================================================
+   TOP RIGHT — MAGAZINE HEADER
+   ========================================================= */
+
+.motion-right-top-right {
+  position: absolute;
+
+  top: 6.5%;
+  right: 8.5%;
+
+  z-index: 20;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   TOP RIGHT LABEL
+   ========================================================= */
+
+.motion-right-top-label {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-end;
+
+  justify-content: center;
+}
+
+
+.motion-right-top-label span {
+  font-family: Arial, sans-serif;
+
+  font-size: 7px;
+
+  line-height: 1.8;
+
+  letter-spacing: 0.39em;
+
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   TOP RIGHT DIVIDER
+   ========================================================= */
+
+.motion-right-top-right > i {
+  display: block;
+
+  width: 30px;
+  height: 1px;
+
+  flex-shrink: 0;
+
+  background: rgba(255, 255, 255, 0.65);
+}
+
+
+/* =========================================================
+   NUMBER 04
+   ========================================================= */
+
+.motion-right-number {
+  display: block;
+
+  min-width: 28px;
+
+  margin: 0;
+
+  font-family: Arial, sans-serif;
+
+  font-size: 20px;
+
+  font-weight: 300;
+
+  line-height: 1;
+
+  letter-spacing: 0;
+
+  text-align: right;
+
+  color: #d86d8a;
+
+  opacity: 0.95;
+}
+
+
+/* =========================================================
+   BOTTOM LEFT
+   ========================================================= */
+
+.motion-right-bottom-left {
+  position: absolute;
+
+  left: 10.5%;
+  bottom: 7%;
+
+  z-index: 20;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-start;
+
+  pointer-events: none;
+}
+
+
+.motion-right-bottom-left i {
+  display: block;
+
+  width: 39px;
+  height: 1px;
+
+  margin-bottom: 12px;
+
+  background: rgba(255, 255, 255, 0.65);
+}
+
+
+.motion-right-bottom-left span {
+  font-family: Arial, sans-serif;
+
+  font-size: 7px;
+
+  letter-spacing: 0.40em;
+
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   BOTTOM RIGHT
+   ========================================================= */
+
+.motion-right-bottom-right {
+  position: absolute;
+
+  right: 10.5%;
+  bottom: 7%;
+
+  z-index: 20;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-end;
+
+  pointer-events: none;
+}
+
+
+.motion-right-bottom-right i {
+  display: block;
+
+  width: 30px;
+  height: 1px;
+
+  margin-bottom: 10px;
+
+  background: rgba(255, 255, 255, 0.65);
+}
+
+
+.motion-right-bottom-right div {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-end;
+}
+
+
+.motion-right-bottom-right span {
+  font-family: Arial, sans-serif;
+
+  font-size: 6.5px;
+
+  line-height: 2;
+
+  letter-spacing: 0.40em;
+
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+  .motion-right-top-left {
+    left: 7%;
+  }
+
+  .motion-right-top-right {
+    right: 7%;
+  }
+
+  .motion-right-bottom-left {
+    left: 7%;
+  }
+
+  .motion-right-bottom-right {
+    right: 7%;
+
+    display: none;
+  }
+}

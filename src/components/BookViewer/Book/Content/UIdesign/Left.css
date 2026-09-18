@@ -1,0 +1,544 @@
+/* =========================================================
+   UI DESIGN — LEFT PAGE
+   Typography visibility pass
+   Composition / placement unchanged
+   ========================================================= */
+
+.ui-left {
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  overflow: hidden;
+
+  container-type: inline-size;
+
+  background:
+    linear-gradient(
+      90deg,
+      #f7f0e9 0%,
+      #faf3ed 48%,
+      #f5ece5 100%
+    );
+
+  color: #292824;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  isolation: isolate;
+}
+
+
+/* =========================================================
+   SUBTLE PAPER LIGHT
+   ========================================================= */
+
+.ui-left::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      ellipse at 73% 44%,
+      rgba(255, 255, 255, 0.22),
+      transparent 50%
+    );
+
+  z-index: 40;
+}
+
+
+/* =========================================================
+   LEFT PAGE HEADER
+   ========================================================= */
+
+.ui-left-header {
+  position: absolute;
+
+  top: 5.3%;
+  left: 7.4%;
+
+  display: flex;
+  align-items: center;
+
+  z-index: 60;
+}
+
+
+/* =========================================================
+   PAGE NUMBER
+   ========================================================= */
+
+.ui-page-number {
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 22px !important;
+
+  font-weight: 400;
+
+  line-height: 1;
+
+  letter-spacing: -0.03em;
+
+  color: #302e2a;
+}
+
+
+/* =========================================================
+   HEADER LINE
+   ========================================================= */
+
+.ui-header-line {
+  width: 10.5cqw;
+  height: 1px;
+
+  margin-left: 2.6cqw;
+  margin-right: 5.2cqw;
+
+  background: #9c958e;
+}
+
+
+/* =========================================================
+   UI DESIGN
+   ========================================================= */
+
+.ui-section-name {
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size: 1.65cqw;
+
+  font-weight: 600;
+
+  letter-spacing: 0.27em;
+
+  color: #403b36;
+
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   TOP RIGHT LABEL
+   ========================================================= */
+
+.ui-left-top-label {
+  position: absolute;
+
+  top: 5.2%;
+  right: 7.5%;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 0.72cqw;
+
+  z-index: 60;
+}
+
+
+.ui-left-top-label span {
+  font-size: 1.62cqw;
+
+  line-height: 1.08;
+
+  letter-spacing: 0.27em;
+
+  font-weight: 600;
+
+  color: #49433d;
+}
+
+
+/* =========================================================
+   MAIN EDITORIAL TITLE
+   ========================================================= */
+
+.ui-left-title {
+  position: absolute;
+
+  top: 24.6%;
+  left: 7.2%;
+
+  /*
+     KEEPING WIDTH AND POSITION EXACTLY THE SAME.
+  */
+  width: 53%;
+
+  z-index: 55;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  /*
+     Clearly larger than the previous 8.15cqw.
+     This gives the title comparable visual weight
+     to the other service spreads.
+  */
+  font-size: 9.25cqw;
+
+  line-height: 0.91;
+
+  letter-spacing: -0.052em;
+
+  color: #282724;
+
+  text-rendering: geometricPrecision;
+}
+
+
+.ui-left-title > div {
+  display: block;
+}
+
+
+/* =========================================================
+   CORAL WORD
+   ========================================================= */
+
+.ui-title-accent {
+  margin-top: 1.05cqw;
+
+  font-style: italic;
+
+  color: #df755d;
+}
+
+
+/* =========================================================
+   TITLE DIVIDER
+   ========================================================= */
+
+.ui-title-divider {
+  position: absolute;
+
+  top: 53.4%;
+  left: 7.2%;
+
+  width: 5.2cqw;
+  height: 1px;
+
+  background: #df735b;
+
+  z-index: 60;
+}
+
+
+/* =========================================================
+   DESCRIPTION
+   ========================================================= */
+
+.ui-left-description {
+  position: absolute;
+
+  top: 58.2%;
+  left: 7.2%;
+
+  z-index: 60;
+
+  /* Increased for comfortable reading */
+  font-size: 3.50cqw !important;
+
+  line-height: 1.38;
+
+  letter-spacing: 0;
+
+  color: #514c47;
+
+  font-weight: 500;
+
+  text-rendering: geometricPrecision;
+}
+
+
+/* =========================================================
+   COMPLETE STILL-LIFE IMAGE
+   ========================================================= */
+
+.ui-left-image {
+  position: absolute;
+
+  /*
+     DO NOT CHANGE.
+  */
+  left: 50.2%;
+  top: 17.2%;
+
+  width: 50.3%;
+  height: 82.8%;
+
+  z-index: 8;
+
+  overflow: hidden;
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   IMAGE FILE
+   ========================================================= */
+
+.ui-left-image-file {
+  position: absolute;
+
+  left: -1%;
+  top: 0;
+
+  width: 101%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+  object-position: center center;
+
+  user-select: none;
+
+  -webkit-user-drag: none;
+}
+
+
+/* =========================================================
+   IMAGE SIDE MESSAGE
+   ========================================================= */
+
+.ui-visual-message {
+  position: absolute;
+
+  top: 25.4%;
+  right: 7.5%;
+
+  z-index: 58;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+
+.ui-visual-message-text {
+  display: flex;
+  flex-direction: column;
+
+  gap: 0.52cqw;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size: 1.62cqw;
+
+  line-height: 1.18;
+
+  letter-spacing: 0.27em;
+
+  color: #433e39;
+
+  font-weight: 600;
+}
+
+
+.ui-visual-message-line {
+  width: 4.2cqw;
+  height: 1px;
+
+  margin-top: 1.25cqw;
+
+  background: #756d65;
+}
+
+
+/* =========================================================
+   BOTTOM KEYWORDS
+   ========================================================= */
+
+.ui-keywords {
+  position: absolute;
+
+  left: 7.2%;
+  bottom: 9.4%;
+
+  z-index: 60;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 0.82cqw;
+}
+
+
+.ui-keywords span {
+  font-size: 1.62cqw;
+
+  line-height: 1;
+
+  letter-spacing: 0.27em;
+
+  color: #49443f;
+
+  font-weight: 600;
+}
+
+
+/* =========================================================
+   LEFT PAGE EDGE
+   ========================================================= */
+
+.ui-left::before {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  top: 0;
+
+  width: 0.8%;
+  height: 100%;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(70, 55, 47, 0.13),
+      transparent
+    );
+
+  z-index: 80;
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   SMALL PAGE
+   IMPORTANT:
+   Do NOT shrink typography back down here.
+   This was the reason the previous modification
+   wasn't visible enough.
+   ========================================================= */
+
+@container (max-width: 420px) {
+
+  .ui-left-header {
+    left: 7%;
+  }
+
+
+  .ui-section-name {
+    font-size: 1.65cqw;
+  }
+
+
+  .ui-left-top-label span {
+    font-size: 1.62cqw;
+  }
+
+
+  .ui-left-title {
+    left: 7%;
+
+    width: 54%;
+
+    /*
+       Same strong typography on the actual
+       magazine-sized container.
+    */
+    font-size: 9.15cqw;
+  }
+
+
+   .ui-left-description {
+    left: 7%;
+    font-size: 3.15cqw;
+    line-height: 1.38;
+    font-weight: 500;
+  }
+
+
+  .ui-left-image {
+    left: 50%;
+
+    width: 50%;
+  }
+
+
+  .ui-visual-message {
+    right: 7%;
+  }
+
+
+  .ui-visual-message-text {
+    font-size: 1.62cqw;
+  }
+
+
+  .ui-keywords {
+    left: 7%;
+  }
+
+
+  .ui-keywords span {
+    font-size: 1.62cqw;
+  }
+}
+
+
+/* =========================================================
+   VERY SMALL PAGE
+   ========================================================= */
+
+@container (max-width: 350px) {
+
+
+  .ui-section-name {
+    font-size: 1.58cqw;
+  }
+
+
+  .ui-left-top-label span {
+    font-size: 1.55cqw;
+  }
+
+
+  .ui-left-title {
+    font-size: 8.85cqw;
+  }
+
+
+  .ui-left-description {
+    font-size: 2.7cqw;
+  }
+
+
+  .ui-left-image {
+    left: 49.5%;
+
+    width: 50.5%;
+  }
+
+
+  .ui-visual-message-text {
+    font-size: 1.55cqw;
+  }
+
+
+  .ui-keywords span {
+    font-size: 1.55cqw;
+  }
+}

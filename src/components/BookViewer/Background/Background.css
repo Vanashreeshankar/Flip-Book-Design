@@ -1,0 +1,1007 @@
+.background-scene {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+    background:
+        radial-gradient(circle at 50% 46%, rgb(255 255 255 / 64%), transparent 61%),
+        radial-gradient(circle at 4% 48%, rgb(255 250 239 / 42%), transparent 38%),
+        radial-gradient(circle at 96% 54%, rgb(255 250 239 / 42%), transparent 40%),
+        #f8f4eb;
+}
+
+
+/* =========================================================
+   PAUSE
+========================================================= */
+
+.background-scene--paused .orbit-line,
+.background-scene--paused .icon-node,
+.background-scene--paused .plus,
+.background-scene--paused .diamond,
+.background-scene--paused .sparkle,
+.background-scene--paused .dot,
+.background-scene--paused .code-symbol,
+.background-scene--paused .cross,
+.background-scene--paused .dust-particle,
+.background-scene--paused .boxed-label,
+.background-scene--paused .terminal-symbol,
+.background-scene--paused .icon-node.is-pulsing img,
+.background-scene--paused .icon-node.is-pulsing::before,
+.background-scene--paused .icon-node.is-pulsing::after,
+.background-scene--paused .icon-node.is-pulsing .icon-ring {
+    animation-play-state: paused !important;
+}
+
+
+/* =========================================================
+   CONNECTION LINES
+
+   Routes and SVG both use a 0–100 coordinate system.
+   The paths therefore physically sit underneath the icons.
+========================================================= */
+
+.connection-lines {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    display: block;
+}
+
+
+/* =========================================================
+   CONTINUOUS MOVING DASH-LINE
+
+   The important part here is that the animation distance
+   equals the COMPLETE dash pattern.
+
+   dash = 4
+   gap  = 10.5
+   total pattern = 14.5
+
+   Moving exactly one complete pattern creates a seamless
+   infinite flow with no jump/reset feeling.
+========================================================= */
+
+.orbit-line {
+    fill: none;
+
+    /* Clean dark-but-delicate line */
+    stroke: rgb(25 27 27 / 70%);
+
+    /* Keep the line thin and premium */
+    stroke-width: 0.58;
+
+    stroke-linecap: round;
+    stroke-linejoin: round;
+
+    /*
+     * Small dash + larger breathing gap.
+     * This keeps the connection visible without becoming heavy.
+     */
+    stroke-dasharray: 4 10.5;
+
+    /*
+     * Start at a clean position.
+     */
+    stroke-dashoffset: 0;
+
+    /*
+     * Keep physical line thickness stable across viewport sizes.
+     */
+    vector-effect: non-scaling-stroke;
+
+    /*
+     * CONTINUOUS FLOW
+
+     * One complete dash pattern = 4 + 10.5 = 14.5
+     * Moving exactly -14.5 makes the next frame visually
+     * identical to the first frame, creating a seamless loop.
+     *
+     * 4.2s gives a clearly visible but elegant movement.
+     */
+    animation: dashFlow 4.2s linear infinite;
+
+    /*
+     * Helps the browser keep the SVG stroke animation smooth.
+     */
+    will-change: stroke-dashoffset;
+}
+
+
+/* =========================================================
+   TRAVELLING DOT
+========================================================= */
+
+.route-traveller {
+    fill: #171a1b;
+    opacity: 0.72;
+    pointer-events: none;
+
+    /*
+     * Very small travelling particle.
+     * This is separate from the decorative dots.
+     */
+    filter:
+        drop-shadow(0 0 1px rgb(255 255 255 / 90%))
+        drop-shadow(0 0 1.5px rgb(23 26 27 / 28%));
+}
+
+
+/* =========================================================
+   SEAMLESS DASH ANIMATION
+========================================================= */
+
+@keyframes dashFlow {
+    from {
+        stroke-dashoffset: 0;
+    }
+
+    to {
+        /*
+         * IMPORTANT:
+         * This must equal the full dash pattern:
+         *
+         * 4 + 10.5 = 14.5
+         */
+        stroke-dashoffset: -14.5;
+    }
+}
+
+
+/* =========================================================
+   ICONS
+========================================================= */
+
+.icons-layer {
+    position: absolute;
+    inset: 0;
+    z-index: 5;
+    width: 100%;
+    height: 100%;
+}
+
+.icon-node {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    isolation: isolate;
+    z-index: 10;
+    animation: iconFloat 8s ease-in-out var(--delay) infinite;
+}
+
+.icon-node img {
+    position: relative;
+    z-index: 4;
+    display: block;
+    width: 58%;
+    height: 58%;
+    object-fit: contain;
+    user-select: none;
+}
+
+.has-ring {
+    width: clamp(110px, 9.2vw, 154px);
+    aspect-ratio: 1;
+}
+
+.has-ring::before,
+.has-ring::after {
+    position: absolute;
+    border-radius: 50%;
+    content: "";
+}
+
+
+/* =========================================================
+   PREMIUM PRIMARY-ICON FRAMING
+
+   Every primary icon uses:
+   icon → inner ring → middle ring → faint outer ring
+========================================================= */
+
+.has-ring::before,
+.has-ring::after {
+    position: absolute;
+    border-radius: 50%;
+    content: "";
+    pointer-events: none;
+}
+
+
+/* Middle ring */
+.has-ring::before {
+    inset: 7%;
+    z-index: 2;
+    background: #f8f4eb;
+    border: 1px solid rgb(25 27 27 / 16%);
+}
+
+
+/* Inner ring */
+.has-ring::after {
+    inset: 22%;
+    z-index: 2;
+    border: 1px dotted rgb(25 27 27 / 13%);
+}
+
+.icon-ring {
+    position: absolute;
+    z-index: 3;
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+
+/* Very faint outer ring */
+.ring-two {
+    inset: -2%;
+    border: 1px dotted rgb(25 27 27 / 9%);
+}
+
+
+/* =========================================================
+   ICON POP WHEN TRAVELLER ARRIVES
+========================================================= */
+
+.icon-node.is-pulsing img {
+    animation: iconArrival 700ms cubic-bezier(0.16, 1, 0.3, 1);
+    transform-origin: center;
+}
+
+.icon-node.is-pulsing::before,
+.icon-node.is-pulsing::after,
+.icon-node.is-pulsing .icon-ring {
+    animation: haloArrival 700ms ease-out;
+    transform-origin: center;
+}
+
+@keyframes iconArrival {
+    0% {
+        transform: scale(1);
+        filter: brightness(1);
+    }
+
+    18% {
+        transform: scale(0.92);
+        filter: brightness(1);
+    }
+
+    38% {
+        transform: scale(1.10);
+        filter: brightness(1.14) contrast(1.04);
+    }
+
+    58% {
+        transform: scale(1.04);
+    }
+
+    78% {
+        transform: scale(0.98);
+    }
+
+    100% {
+        transform: scale(1);
+        filter: brightness(1);
+    }
+}
+
+@keyframes haloArrival {
+    0% {
+        opacity: 0.25;
+        transform: scale(0.95);
+    }
+
+    28% {
+        opacity: 1;
+        transform: scale(1.09);
+    }
+
+    62% {
+        opacity: 0.65;
+        transform: scale(1.025);
+    }
+
+    100% {
+        opacity: 0.45;
+        transform: scale(1);
+    }
+}
+
+
+/* =========================================================
+   ICON POSITIONS
+========================================================= */
+
+.node-web {
+    left: 8%;
+    top: 11%;
+}
+
+.node-database {
+    left: 29%;
+    top: 18%;
+}
+
+.node-design {
+    left: 61%;
+    top: 12%;
+}
+
+.node-phone {
+    left: 14%;
+    top: 39%;
+}
+
+.node-laptop {
+    left: 8%;
+    top: 67%;
+}
+
+.node-product {
+    left: 60%;
+    top: 76%;
+}
+
+.node-3d {
+    left: 83%;
+    top: 14%;
+}
+
+.node-motion {
+    left: 74%;
+    top: 65%;
+}
+
+.node-mobile-ui {
+    left: 50%;
+    top: 57%;
+}
+
+.node-frontend {
+    left: 70%;
+    top: 34%;
+    width: clamp(135px, 11vw, 190px);
+    animation: centralFloat 8s ease-in-out var(--delay) infinite;
+}
+
+.node-frontend img {
+    width: 52%;
+    height: 52%;
+}
+
+.small-node {
+    z-index: 8;
+    width: clamp(40px, 4vw, 68px);
+    aspect-ratio: 1;
+    animation: smallFloat 6s ease-in-out var(--delay) infinite;
+}
+
+.small-node img {
+    width: 100%;
+    height: 100%;
+}
+
+.node-fullstack {
+    left: 40%;
+    top: 45%;
+}
+
+.node-gears {
+    left: 51%;
+    top: 35%;
+}
+
+.node-cloud {
+    left: 48%;
+    top: 8%;
+}
+
+.node-folder {
+    left: 26%;
+    top: 69%;
+}
+
+.node-threeD {
+    left: 89%;
+    top: 43%;
+}
+
+
+@keyframes iconFloat {
+    0%,
+    100% {
+        transform: translate3d(0, 0, 0);
+    }
+
+    25% {
+        transform: translate3d(0, -4px, 0);
+    }
+
+    50% {
+        transform: translate3d(0, 2px, 0);
+    }
+
+    75% {
+        transform: translate3d(0, -3px, 0);
+    }
+}
+
+@keyframes centralFloat {
+    0%,
+    100% {
+        transform: translate3d(0, 0, 0) scale(1);
+    }
+
+    50% {
+        transform: translate3d(0, -5px, 0) scale(1.015);
+    }
+}
+
+@keyframes smallFloat {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-4px);
+    }
+}
+
+
+/* =========================================================
+   DECORATIVE FIELD
+========================================================= */
+
+.decor-layer {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    width: 100%;
+    height: 100%;
+    color: #171a1b;
+}
+
+.dust-field {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.dust-particle {
+    position: absolute;
+    left: var(--dust-x);
+    top: var(--dust-y);
+    width: var(--dust-size);
+    height: var(--dust-size);
+    border-radius: 50%;
+    background: #1c1d1b;
+    box-shadow: 0 0 5px rgb(31 29 25 / 28%);
+    opacity: 0.045;
+    animation:
+        dustTwinkle var(--dust-duration)
+        ease-in-out var(--dust-delay)
+        infinite;
+}
+
+@keyframes dustTwinkle {
+    0%,
+    100% {
+        opacity: 0.04;
+        transform: translate3d(0, 0, 0) scale(0.65);
+    }
+
+    43% {
+        opacity: 0.48;
+        transform: translate3d(0, -2px, 0) scale(1.1);
+    }
+
+    55% {
+        opacity: 0.1;
+        transform: translate3d(1px, -3px, 0) scale(0.75);
+    }
+}
+
+.decor-layer > :not(.dust-field) {
+    z-index: 1;
+}
+
+
+/* =========================================================
+   BOXED LABELS
+========================================================= */
+
+.boxed-label {
+    position: absolute;
+    display: grid;
+    width: clamp(32px, 2.7vw, 45px);
+    aspect-ratio: 1;
+    place-items: center;
+    border: 1px solid rgb(23 26 27 / 68%);
+    background: rgb(248 244 235 / 18%);
+    color: #171a1b;
+    font-family: "SFMono-Regular", Consolas, monospace;
+    font-size: clamp(10px, 0.9vw, 14px);
+}
+
+.api-label {
+    left: 43%;
+    top: 22%;
+}
+
+.js-label {
+    left: 51.5%;
+    top: 77%;
+}
+
+
+/* =========================================================
+   TERMINAL
+========================================================= */
+
+.terminal-symbol {
+    position: absolute;
+    left: 70.5%;
+    top: 9.5%;
+    display: flex;
+    width: clamp(48px, 4vw, 64px);
+    height: clamp(38px, 3.3vw, 54px);
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgb(23 26 27 / 68%);
+    font-family: "SFMono-Regular", Consolas, monospace;
+}
+
+.terminal-dots {
+    position: absolute;
+    top: -8px;
+    left: 7px;
+    font-size: 9px;
+    letter-spacing: 2px;
+}
+
+.terminal-text {
+    font-size: clamp(14px, 1.2vw, 19px);
+}
+
+
+/* =========================================================
+   CODE SYMBOLS
+========================================================= */
+
+.code-symbol {
+    position: absolute;
+    color: #171a1b;
+    font-family: "SFMono-Regular", Consolas, monospace;
+    font-size: clamp(17px, 1.55vw, 25px);
+    animation: tinyFloat 7s ease-in-out infinite;
+}
+
+.code-top {
+    left: 21%;
+    top: 9%;
+}
+
+.code-bottom {
+    left: 41%;
+    top: 72%;
+}
+
+
+/* =========================================================
+   PLUS SYMBOLS
+========================================================= */
+
+.plus {
+    position: absolute;
+    font-family: Arial, sans-serif;
+    font-size: clamp(17px, 1.4vw, 25px);
+    font-weight: 300;
+    transform-origin: center;
+    animation: symbolTwinkle 4.8s ease-in-out infinite;
+}
+
+.plus-1 {
+    left: 3.7%;
+    top: 11%;
+    animation-delay: -0.4s;
+}
+
+.plus-2 {
+    left: 43%;
+    top: 4%;
+    animation-delay: -2.1s;
+}
+
+.plus-3 {
+    left: 95%;
+    top: 27%;
+    animation-delay: -1.2s;
+}
+
+.plus-4 {
+    left: 17%;
+    top: 88%;
+    animation-delay: -3.4s;
+}
+
+.plus-5 {
+    left: 82%;
+    top: 83%;
+    animation-delay: -2.8s;
+}
+
+
+/* =========================================================
+   DIAMONDS
+========================================================= */
+
+.diamond {
+    position: absolute;
+    width: clamp(8px, 0.7vw, 12px);
+    aspect-ratio: 1;
+    border: 1px solid rgb(23 26 27 / 78%);
+    transform: rotate(45deg);
+    animation: diamondPulse 6s ease-in-out infinite;
+}
+
+.diamond-1 {
+    left: 51.5%;
+    top: 15%;
+}
+
+.diamond-2 {
+    left: 78%;
+    top: 18%;
+}
+
+.diamond-3 {
+    left: 35%;
+    top: 39%;
+}
+
+.diamond-4 {
+    left: 66%;
+    top: 42%;
+}
+
+.diamond-5 {
+    left: 66%;
+    top: 91%;
+}
+
+.diamond-6 {
+    left: 90%;
+    top: 75%;
+}
+
+@keyframes diamondPulse {
+    0%,
+    100% {
+        opacity: 0.38;
+        transform: rotate(45deg) scale(0.8);
+    }
+
+    50% {
+        opacity: 0.72;
+        transform: rotate(45deg) scale(0.96);
+    }
+}
+
+
+/* =========================================================
+   SPARKLES
+========================================================= */
+
+.sparkle {
+    position: absolute;
+    color: #171a1b;
+    font-size: clamp(12px, 0.9vw, 17px);
+    transform-origin: center;
+    animation: symbolTwinkle 4.2s ease-in-out infinite;
+}
+
+.sparkle-1 {
+    left: 32%;
+    top: 11%;
+    animation-delay: -1.1s;
+}
+
+.sparkle-2 {
+    left: 54%;
+    top: 6%;
+    animation-delay: -3.1s;
+}
+
+.sparkle-3 {
+    left: 69%;
+    top: 31%;
+    animation-delay: -0.5s;
+}
+
+.sparkle-4 {
+    left: 92%;
+    top: 62%;
+    animation-delay: -2.5s;
+}
+
+.sparkle-5 {
+    left: 45%;
+    top: 85%;
+    animation-delay: -3.6s;
+}
+
+
+/* =========================================================
+   DECORATIVE DOTS
+========================================================= */
+
+.dot {
+    position: absolute;
+    width: clamp(3px, 0.28vw, 5px);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: #171a1b;
+    animation: dotPulse 5s ease-in-out infinite;
+}
+
+.dot-1 {
+    left: 2.8%;
+    top: 20%;
+}
+
+.dot-2 {
+    left: 28%;
+    top: 25%;
+}
+
+.dot-3 {
+    left: 59%;
+    top: 11%;
+}
+
+.dot-4 {
+    left: 88%;
+    top: 37%;
+}
+
+.dot-5 {
+    left: 91%;
+    top: 85%;
+}
+
+.dot-6 {
+    left: 45%;
+    top: 48%;
+}
+
+.dot-7 {
+    left: 30%;
+    top: 76%;
+}
+
+.dot-8 {
+    left: 79%;
+    top: 51%;
+}
+
+.dot-9 {
+    left: 69%;
+    top: 81%;
+}
+
+.dot-10 {
+    left: 16%;
+    top: 56%;
+}
+
+@keyframes dotPulse {
+    0%,
+    100% {
+        opacity: 0.32;
+        transform: scale(0.72);
+    }
+
+    50% {
+        opacity: 0.85;
+        transform: scale(1.2);
+    }
+}
+
+
+/* =========================================================
+   DOT GRIDS
+========================================================= */
+
+.dot-grid {
+    position: absolute;
+    width: clamp(34px, 3.7vw, 56px);
+    height: clamp(27px, 2.8vw, 45px);
+    background-image:
+        radial-gradient(
+            circle,
+            #171a1b 1.2px,
+            transparent 1.5px
+        );
+    background-size: 9px 9px;
+    opacity: 0.42;
+}
+
+.grid-top-right {
+    left: 91%;
+    top: 7%;
+}
+
+.grid-bottom-left {
+    left: 1%;
+    top: 86%;
+}
+
+.grid-bottom-center {
+    left: 29%;
+    top: 88%;
+}
+
+
+/* =========================================================
+   CROSSES
+========================================================= */
+
+.cross {
+    position: absolute;
+    font-family: Arial, sans-serif;
+    font-size: clamp(12px, 1vw, 17px);
+    transform-origin: center;
+    animation: symbolTwinkle 5.4s ease-in-out infinite;
+}
+
+.cross-1 {
+    left: 4%;
+    top: 25%;
+    animation-delay: -1.4s;
+}
+
+.cross-2 {
+    left: 72%;
+    top: 81%;
+    animation-delay: -3.2s;
+}
+
+.cross-3 {
+    left: 45%;
+    top: 78%;
+    animation-delay: -0.7s;
+}
+
+.cross-4 {
+    left: 96%;
+    top: 55%;
+    animation-delay: -2.2s;
+}
+
+
+/* =========================================================
+   SYMBOL TWINKLE
+========================================================= */
+
+@keyframes symbolTwinkle {
+    0%,
+    100% {
+        opacity: 0.28;
+        transform: scale(0.78);
+        filter: drop-shadow(
+            0 0 0 rgb(255 255 255 / 0%)
+        );
+    }
+
+    42% {
+        opacity: 0.55;
+        transform: scale(0.92);
+        filter: drop-shadow(
+            0 0 2px rgb(23 26 27 / 14%)
+        );
+    }
+
+    50% {
+        opacity: 0.72;
+        transform: scale(1.06);
+        filter:
+            drop-shadow(
+                0 0 3px rgb(255 255 255 / 95%)
+            )
+            drop-shadow(
+                0 0 6px rgb(23 26 27 / 18%)
+            );
+    }
+
+    58% {
+        opacity: 0.58;
+        transform: scale(0.94);
+        filter: drop-shadow(
+            0 0 2px rgb(23 26 27 / 12%)
+        );
+    }
+}
+
+
+/* =========================================================
+   TINY FLOAT
+========================================================= */
+
+@keyframes tinyFloat {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-4px);
+    }
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1100px) {
+    .has-ring {
+        width: clamp(95px, 10vw, 145px);
+    }
+
+    .node-frontend {
+        width: clamp(125px, 13vw, 180px);
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+    .background-scene {
+        width: 900px;
+        left: 50%;
+        right: auto;
+        transform: translateX(-50%);
+    }
+
+    .orbit-line {
+        stroke-width: 0.58;
+    }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+    .orbit-line,
+    .icon-node,
+    .plus,
+    .diamond,
+    .sparkle,
+    .dot,
+    .code-symbol,
+    .cross,
+    .dust-particle,
+    .boxed-label,
+    .terminal-symbol,
+    .icon-node.is-pulsing img,
+    .icon-node.is-pulsing::before,
+    .icon-node.is-pulsing::after,
+    .icon-node.is-pulsing .icon-ring {
+        animation: none !important;
+    }
+}

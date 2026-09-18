@@ -1,0 +1,253 @@
+/* =========================================
+   NORMAL CLOSED BOOK
+========================================= */
+
+.book {
+    position: relative;
+
+    width: min(28vw, 340px);
+
+    aspect-ratio: 2 / 3;
+
+    cursor: pointer;
+
+    perspective: 2500px;
+
+    transform-style:
+        preserve-3d;
+
+    overflow: visible;
+
+    /*
+     * The book itself has NO transition.
+     *
+     * Only the actual cover/page being flipped
+     * should animate.
+     */
+
+    transition: none;
+}
+
+
+/* =========================================
+   NORMAL OPEN BOOK
+========================================= */
+
+.book--opened {
+    transform:
+        translateX(50%);
+}
+
+
+/* =========================================
+   FINAL BACK COVER SPREAD
+========================================= */
+
+.book--back-cover {
+    transform:
+        translateX(50%);
+}
+
+
+/* =========================================
+   SINGLE BACK COVER
+========================================= */
+
+.book--back-cover-open {
+    transform:
+        translateX(100%);
+}
+
+
+/* =========================================
+   BOOK BODY
+========================================= */
+
+.book__body {
+    position: absolute;
+
+    inset: 0;
+
+    overflow: visible;
+
+    transform-style:
+        preserve-3d;
+
+    z-index: 10;
+}
+
+
+/* =========================================
+   OPEN BOOK
+========================================= */
+
+.book--opened
+.book__body {
+    z-index: 100;
+}
+
+
+/* =========================================
+   FINAL BACK COVER SPREAD
+========================================= */
+
+.book--back-cover
+.book__body {
+    z-index: 100;
+}
+
+
+/* =========================================
+   FRONT COVER
+========================================= */
+
+.book__cover {
+    position: absolute;
+
+    inset: 0;
+
+    /*
+     * Closed state:
+     *
+     * Front cover stays above everything.
+     */
+    z-index: 2000;
+
+    transform-origin:
+        left center;
+
+    transform-style:
+        preserve-3d;
+
+    transform:
+        rotateY(0deg);
+
+    transition:
+        transform
+        0.9s
+        cubic-bezier(
+            .22,
+            .61,
+            .36,
+            1
+        );
+
+    will-change:
+        transform;
+
+    cursor: pointer;
+
+    user-select: none;
+
+    overflow: visible;
+}
+
+/* =========================================================
+   FORCE THE ENTIRE COVER CONTAINER TO ONE DEEP TEAL
+   This sits behind the Cover artwork and prevents the
+   underlying PageFlip/book lighting from showing through.
+   ========================================================= */
+
+
+/* =========================================
+   FRONT COVER OPEN
+========================================= */
+
+.book--opened
+.book__cover {
+
+    transform:
+        rotateY(-180deg);
+
+    /*
+     * IMPORTANT:
+     *
+     * This is the ORIGINAL normal open state.
+     *
+     * Once the cover has finished rotating,
+     * PageFlip must be above it.
+     */
+    z-index: 30;
+
+    pointer-events: none;
+}
+
+
+/* =========================================
+   COVER TRANSITION PROTECTION
+========================================= */
+
+/*
+ * Only while the front cover is actively
+ * rotating, keep it above the PageFlip body.
+ *
+ * This prevents the body/back layer from
+ * suddenly jumping in front during the
+ * first frame of the opening animation.
+ *
+ * When transition ends, React removes
+ * this class and the normal z-index: 30
+ * behavior immediately returns.
+ */
+
+.book--cover-transitioning
+.book__cover {
+    z-index: 2000;
+}
+
+
+/* =========================================
+   COVER CHILDREN
+========================================= */
+
+.book__cover > * {
+
+    backface-visibility:
+        hidden;
+
+    -webkit-backface-visibility:
+        hidden;
+
+    transform-style:
+        preserve-3d;
+}
+
+
+/* =========================================
+   BACK COVER STATE
+========================================= */
+
+.book--back-cover
+.book__cover {
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+}
+
+
+/* =========================================
+   KEEP BODY ABOVE STACK
+========================================= */
+
+.book--back-cover
+.book__body {
+    z-index: 100;
+}
+
+
+/* =========================================
+   IMPORTANT
+
+   DO NOT hide PageStack when:
+
+       Last Back | Back Cover
+
+   is visible.
+
+   At that moment all paper thickness must
+   remain on the LEFT.
+
+========================================= */

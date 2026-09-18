@@ -1,0 +1,755 @@
+/* =========================================================
+   DOODLE REVEAL
+   ========================================================= */
+
+.doodle-reveal {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  overflow: hidden;
+
+  isolation: isolate;
+}
+
+
+/* =========================================================
+   BLURRED ORIGINAL
+   ========================================================= */
+
+.doodle-reveal-content {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  /*
+   * IMPORTANT:
+   *
+   * This NEVER decreases while scratching.
+   *
+   * The page remains blurred everywhere except
+   * where the sharp duplicate is revealed.
+   */
+
+  filter:
+    blur(9px);
+
+  transform:
+    translateZ(0);
+
+  /*
+   * Do NOT transition blur during scratching.
+   *
+   * This removes the blur/clear flicker seen
+   * in the video.
+   */
+
+  transition:
+    filter 0.65s
+    cubic-bezier(
+      0.22,
+      1,
+      0.36,
+      1
+    );
+}
+
+
+/* =========================================================
+   SHARP DUPLICATE
+   ========================================================= */
+
+.doodle-reveal-sharp-content {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  z-index: 5;
+
+  pointer-events: none;
+
+  overflow: hidden;
+
+  /*
+   * Initially there is NO visible sharp content.
+   *
+   * React applies a transparent canvas mask
+   * after setup.
+   */
+
+  mask-repeat:
+    no-repeat;
+
+  -webkit-mask-repeat:
+    no-repeat;
+
+  mask-position:
+    0 0;
+
+  -webkit-mask-position:
+    0 0;
+
+  mask-size:
+    100% 100%;
+
+  -webkit-mask-size:
+    100% 100%;
+
+  /*
+   * Prevent a flash of sharp content
+   * before the first mask is applied.
+   */
+
+  opacity: 0;
+
+  transition:
+    opacity 0.01s linear;
+}
+
+
+/*
+ * Once the component is mounted, JS applies
+ * the actual transparent mask.
+
+ * This class becomes visible only after
+ * the mask exists.
+ */
+
+.doodle-reveal-sharp-content[style*="mask-image"] {
+  opacity: 1;
+}
+
+
+/* =========================================================
+   INTERACTION LAYER
+   ========================================================= */
+
+.doodle-interaction-layer {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  z-index: 9999;
+
+  pointer-events: none;
+
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   CANVAS
+   ========================================================= */
+
+.doodle-canvas {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  z-index: 100;
+
+  pointer-events: auto;
+
+  opacity: 0;
+
+  background: transparent;
+
+  border: 0;
+  outline: none;
+
+  /* O-shaped eraser cursor */
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'%3E%3Ccircle cx='14' cy='14' r='8' fill='none' stroke='%236E4435' stroke-width='2'/%3E%3C/svg%3E") 14 14, auto;
+  touch-action: none;
+
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+
+
+/* =========================================================
+   INVISIBLE REVEAL MASK CANVAS
+   ========================================================= */
+
+.doodle-reveal-mask {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  opacity: 0;
+
+  pointer-events: none;
+
+  z-index: -1;
+}
+
+
+/* =========================================================
+   LEFT PAGE — DOD / DRAW TO
+
+   THESE VALUES ARE FROM THE EXISTING TYPOLOGY.
+   ========================================================= */
+
+.doodle-reveal-heading {
+  position: absolute;
+
+  left: 64%;
+
+  top: 50%;
+
+  transform:
+    translate(
+      -50%,
+      -50%
+    );
+
+  display:
+    flex;
+
+  flex-direction:
+    column;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  text-align:
+    center;
+
+  pointer-events:
+    none;
+
+  white-space:
+    nowrap;
+
+  width:
+    max-content;
+
+  z-index:
+    120;
+}
+
+
+/* =========================================================
+   DOD
+   ========================================================= */
+
+.doodle-word {
+  display:
+    block;
+
+  margin:
+    0;
+
+  padding:
+    0;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size:
+    clamp(
+      46px,
+      7cqw,
+      108px
+    );
+
+  line-height:
+    0.88;
+
+  font-weight:
+    800;
+
+  letter-spacing:
+    -0.065em;
+
+  color:
+    #24201D;
+
+  text-transform:
+    uppercase;
+
+  white-space:
+    nowrap;
+}
+
+
+/* =========================================================
+   DRAW TO
+   ========================================================= */
+
+.doodle-instruction {
+  display:
+    block;
+
+  margin-top:
+    1.15cqw;
+
+  position:
+    relative;
+
+  /*
+   * KEEP DRAW TO TOWARD THE SPINE.
+   */
+
+  left:
+    4cqw;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size:
+    clamp(
+      9px,
+      1.05cqw,
+      15px
+    );
+
+  line-height:
+    1;
+
+  font-weight:
+    500;
+
+  letter-spacing:
+    0.36em;
+
+  color: #9A5B43;
+
+  white-space:
+    nowrap;
+}
+
+
+/* =========================================================
+   RIGHT PAGE — DLE
+   ========================================================= */
+
+.doodle-right-text {
+  position: absolute;
+
+  /*
+   * Keep this on the RIGHT page.
+   */
+
+  left:
+    0.5%;
+
+  top:
+    50%;
+
+  transform:
+    translateY(-50%);
+
+  z-index:
+    120;
+
+  display:
+    flex;
+
+  flex-direction:
+    column;
+
+  align-items:
+    flex-start;
+
+  justify-content:
+    center;
+
+  width:
+    max-content;
+
+  pointer-events:
+    none;
+
+  user-select:
+    none;
+
+  -webkit-user-select:
+    none;
+
+  white-space:
+    nowrap;
+}
+
+
+/* =========================================================
+   DLE
+   ========================================================= */
+
+.doodle-right-word {
+  display:
+    block;
+
+  margin:
+    0;
+
+  padding:
+    0;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size:
+    clamp(
+      46px,
+      7cqw,
+      108px
+    );
+
+  line-height:
+    0.88;
+
+  font-weight:
+    800;
+
+  letter-spacing:
+    -0.065em;
+
+  color:
+    #24201D;
+
+  text-transform:
+    uppercase;
+
+  white-space:
+    nowrap;
+}
+
+
+/* =========================================================
+   REVEAL
+   ========================================================= */
+
+.doodle-right-instruction {
+  display:
+    block;
+
+  margin-top:
+    1.15cqw;
+
+  margin-left:
+    0.15cqw;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size:
+    clamp(
+      9px,
+      1.05cqw,
+      15px
+    );
+
+  line-height:
+    1;
+
+  font-weight:
+    500;
+
+  letter-spacing:
+    0.36em;
+
+  color:
+   #9A5B43;
+
+  white-space:
+    nowrap;
+}
+
+
+/* =========================================================
+   PROGRESS
+   ========================================================= */
+
+.doodle-progress {
+  position:
+    absolute;
+
+  left:
+    50%;
+
+  bottom:
+    5.5%;
+
+  transform:
+    translateX(-50%);
+
+  z-index:
+    110;
+
+  pointer-events:
+    none;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size:
+    clamp(
+      8px,
+      0.82cqw,
+      12px
+    );
+
+  font-weight:
+    500;
+
+  letter-spacing:
+    0.25em;
+
+  color:
+    rgba(
+      45,
+      41,
+      37,
+      0.42
+    );
+
+  opacity:
+    0.7;
+
+  transition:
+    opacity 0.25s ease;
+}
+
+
+/* =========================================================
+   IMPORTANT:
+   DETERMINE WHICH TYPOLOGY BELONGS TO WHICH PAGE
+   ========================================================= */
+
+/*
+ * If this DoodleReveal contains the File-1
+ * left page, show DOD.
+ */
+
+.doodle-reveal:has(
+  .ui-left
+) .doodle-reveal-heading {
+  display:
+    flex;
+}
+
+
+/*
+ * If this DoodleReveal contains the right page,
+ * hide DOD.
+ */
+
+.doodle-reveal:has(
+  .ui-mag-right
+) .doodle-reveal-heading {
+  display:
+    none;
+}
+
+
+/*
+ * If this DoodleReveal contains the right page,
+ * show DLE.
+ */
+
+.doodle-reveal:has(
+  .ui-mag-right
+) .doodle-right-text {
+  display:
+    flex;
+}
+
+
+/*
+ * If this DoodleReveal contains the left page,
+ * hide DLE.
+ */
+
+.doodle-reveal:has(
+  .ui-left
+) .doodle-right-text {
+  display:
+    none;
+}
+
+
+/* =========================================================
+   COMPLETION
+   ========================================================= */
+
+.doodle-reveal-complete
+  .doodle-reveal-content {
+
+  filter:
+    blur(0);
+
+  transition:
+    filter 0.65s
+    cubic-bezier(
+      0.22,
+      1,
+      0.36,
+      1
+    );
+}
+
+
+/*
+ * IMPORTANT:
+ *
+ * Do NOT leave the doodle canvas sitting
+ * above the finished page.
+ */
+
+.doodle-reveal-complete
+  .doodle-canvas {
+
+  opacity:
+    0;
+
+  pointer-events:
+    none;
+
+  transition:
+    opacity 0.15s ease;
+}
+
+
+/*
+ * Hide interaction text after complete reveal.
+ */
+
+.doodle-reveal-complete
+  .doodle-reveal-heading {
+
+  opacity:
+    0;
+
+  transform:
+    translate(
+      -50%,
+      -50%
+    )
+    scale(
+      0.96
+    );
+
+  transition:
+    opacity 0.45s ease,
+
+    transform 0.5s
+    cubic-bezier(
+      0.22,
+      1,
+      0.36,
+      1
+    );
+}
+
+
+.doodle-reveal-complete
+  .doodle-right-text {
+
+  opacity:
+    0;
+
+  transform:
+    translateY(
+      -50%
+    )
+    scale(
+      0.97
+    );
+
+  transition:
+    opacity 0.45s ease,
+
+    transform 0.5s
+    cubic-bezier(
+      0.22,
+      1,
+      0.36,
+      1
+    );
+}
+
+
+.doodle-reveal-complete
+  .doodle-progress {
+
+  opacity:
+    0;
+}
+
+
+/* =========================================================
+   SMALL PAGE
+   ========================================================= */
+
+@media (max-width: 500px) {
+
+  .doodle-word {
+    font-size:
+      7.5cqw;
+  }
+
+
+  .doodle-instruction {
+    font-size:
+      1.05cqw;
+
+    letter-spacing:
+      0.30em;
+
+    left:
+      7cqw;
+  }
+
+
+  .doodle-right-word {
+    font-size:
+      7.5cqw;
+  }
+
+
+  .doodle-right-instruction {
+    font-size:
+      1.05cqw;
+
+    letter-spacing:
+      0.30em;
+  }
+
+
+  .doodle-progress {
+    bottom:
+      5%;
+  }
+
+}

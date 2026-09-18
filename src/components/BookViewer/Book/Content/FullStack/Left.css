@@ -1,0 +1,887 @@
+/* =========================================================
+   FULL STACK — LEFT PAGE
+   IMAGE BASED 3D SPILL
+
+   IMPORTANT:
+   - Image position is NOT changed.
+   - Image size is NOT changed.
+   - Typography is constrained to the LEFT PAGE.
+   - Title is always rendered above the image layer.
+   ========================================================= */
+
+.fs-left {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  overflow: hidden;
+
+  box-sizing: border-box;
+
+  padding: 6.2% 7.2% 6.5%;
+
+  color: #f4f7fb;
+
+  font-family:
+    Inter,
+    "Helvetica Neue",
+    Arial,
+    sans-serif;
+
+  background:
+    radial-gradient(
+      ellipse at 91% 43%,
+      rgba(0, 105, 255, 0.25),
+      transparent 48%
+    ),
+    radial-gradient(
+      ellipse at 76% 75%,
+      rgba(0, 77, 180, 0.16),
+      transparent 48%
+    ),
+    radial-gradient(
+      ellipse at 83% 5%,
+      rgba(0, 91, 255, 0.12),
+      transparent 38%
+    ),
+    linear-gradient(
+      145deg,
+      #05090e 0%,
+      #03070c 50%,
+      #02050a 100%
+    );
+
+  container-type: inline-size;
+
+  isolation: isolate;
+}
+
+
+/* =========================================================
+   CINEMATIC BLUE ATMOSPHERE
+   ========================================================= */
+
+.fs-left-glow {
+  position: absolute;
+
+  width: 72%;
+  height: 86%;
+
+  right: -22%;
+  top: 8%;
+
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(0, 125, 255, 0.30) 0%,
+      rgba(0, 82, 190, 0.15) 32%,
+      rgba(0, 42, 100, 0.06) 52%,
+      transparent 75%
+    );
+
+  filter: blur(42px);
+
+  opacity: 0.95;
+
+  z-index: 0;
+}
+
+
+/* =========================================================
+   BLUE VERTICAL LIGHT BEAM
+   ========================================================= */
+
+.fs-left-beam {
+  position: absolute;
+
+  top: -5%;
+  bottom: -8%;
+
+  left: 84%;
+
+  width: 2px;
+
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(0, 110, 255, 0.12) 8%,
+      rgba(0, 125, 255, 0.42) 22%,
+      #008dff 44%,
+      #00b5ff 55%,
+      rgba(0, 115, 255, 0.42) 77%,
+      transparent 100%
+    );
+
+  box-shadow:
+    0 0 7px rgba(0, 151, 255, 0.95),
+    0 0 22px rgba(0, 125, 255, 0.62),
+    0 0 48px rgba(0, 105, 255, 0.32);
+
+  opacity: 0.72;
+
+  z-index: 1;
+}
+
+
+/* =========================================================
+   FLOOR LIGHT
+   ========================================================= */
+
+.fs-left-floor-glow {
+  position: absolute;
+
+  left: 34%;
+  bottom: -12%;
+
+  width: 85%;
+  height: 42%;
+
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(0, 109, 255, 0.32),
+      rgba(0, 65, 170, 0.10) 42%,
+      transparent 70%
+    );
+
+  filter: blur(30px);
+
+  opacity: 0.75;
+
+  z-index: 1;
+}
+
+
+/* =========================================================
+   3D IMAGE STAGE
+
+   !!! DO NOT CHANGE THESE VALUES !!!
+
+   These are your existing image values.
+   ========================================================= */
+
+.fs-left-image-stage {
+  position: absolute;
+
+  left: 66%;
+  top: -2%;
+
+  width: 118%;
+  height: 102%;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  overflow: visible;
+
+  pointer-events: none;
+
+  transform-origin: center center;
+
+  z-index: 5;
+}
+
+
+/* =========================================================
+   ARCHITECTURE IMAGE
+
+   Position and dimensions remain unchanged.
+   ========================================================= */
+
+.fs-left-architecture-image {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+
+  object-position: center center;
+
+  max-width: none;
+
+  user-select: none;
+
+  -webkit-user-drag: none;
+
+  pointer-events: none;
+
+  /*
+     Keeps the image visually integrated with
+     the dark page.
+  */
+  mix-blend-mode: screen;
+
+  filter:
+    brightness(1.03)
+    contrast(1.06)
+    saturate(1.02)
+    drop-shadow(
+      0 25px 35px rgba(0, 0, 0, 0.50)
+    );
+}
+
+
+/* =========================================================
+   SOFT IMAGE / PAGE TRANSITION
+
+   Prevents the architecture from looking like
+   a rectangular patch placed over the page.
+   ========================================================= */
+
+.fs-left-image-stage::before {
+  content: "";
+
+  position: absolute;
+
+  left: -22%;
+  top: 8%;
+
+  width: 72%;
+  height: 84%;
+
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(0, 82, 210, 0.15) 0%,
+      rgba(0, 57, 150, 0.07) 38%,
+      transparent 74%
+    );
+
+  filter: blur(36px);
+
+  opacity: 0.70;
+
+  z-index: -1;
+}
+
+
+/* =========================================================
+   TOP HEADER
+   ========================================================= */
+
+.fs-left-header {
+  position: relative;
+
+  display: flex;
+
+  align-items: center;
+
+  width: 100%;
+
+  z-index: 100;
+
+  pointer-events: none;
+}
+
+
+.fs-page-number {
+    flex: 0 0 auto;
+
+  font-size: 22px;
+
+  font-weight: 400;
+
+  line-height: 1;
+
+  letter-spacing: -0.03em;
+
+  color:
+    rgba(
+      248,
+      250,
+      252,
+      0.96
+    );
+}
+
+
+.fs-header-line {
+  width:
+    clamp(
+      38px,
+      9.2cqw,
+      72px
+    );
+
+  height: 1px;
+
+  margin-left:
+    clamp(
+      14px,
+      3.5cqw,
+      27px
+    );
+
+  margin-right:
+    clamp(
+      18px,
+      4.7cqw,
+      36px
+    );
+
+  flex: 0 0 auto;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.43
+    );
+}
+
+
+.fs-section-name {
+  white-space: nowrap;
+
+  font-size:
+    clamp(
+      6px,
+      1.30cqw,
+      10px
+    );
+
+  font-weight: 400;
+
+  letter-spacing: 0.30em;
+
+  color:
+    rgba(
+      245,
+      248,
+      251,
+      0.90
+    );
+}
+
+
+/* =========================================================
+   PROCESS
+   ========================================================= */
+
+.fs-process {
+  position: absolute;
+
+  top: 14.2%;
+  left: 7.5%;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap:
+    clamp(
+      4px,
+      0.80cqw,
+      7px
+    );
+
+  z-index: 100;
+
+  pointer-events: none;
+}
+
+
+.fs-process span {
+  font-size:
+    clamp(
+      6px,
+      1.18cqw,
+      9px
+    );
+
+  line-height: 1.35;
+
+  letter-spacing: 0.25em;
+
+  white-space: nowrap;
+
+  color:
+    rgba(
+      238,
+      243,
+      248,
+      0.76
+    );
+}
+
+
+/* =========================================================
+   MAIN TITLE
+   =========================================================
+
+   IMPORTANT FIX:
+
+   The title is now deliberately limited to the
+   usable LEFT PAGE area.
+
+   It is also placed above the image layer.
+
+   This prevents:
+
+       Developmen[t]  <- clipped
+
+   and gives:
+
+       Development   <- complete
+   ========================================================= */
+
+.fs-left-title {
+  position: absolute;
+
+  /*
+     Same left alignment as the reference.
+  */
+  left: 7.5%;
+
+  /*
+     DO NOT use right: 5% here.
+
+     The previous right-based sizing allowed the
+     title box to interact badly with the image
+     boundary.
+  */
+
+  width: 54%;
+
+  max-width: 54%;
+
+  top: 30.7%;
+
+  /*
+     Very important:
+     title must be above the image stage.
+  */
+  z-index: 1000;
+
+  isolation: isolate;
+
+  pointer-events: none;
+
+  overflow: visible;
+
+  white-space: nowrap;
+
+  /*
+     Establish a clean stacking layer.
+  */
+  transform: translateZ(0);
+}
+
+
+/* =========================================================
+   TITLE LINES
+   ========================================================= */
+
+.fs-title-white,
+.fs-title-blue {
+  display: block;
+
+  width: max-content;
+
+  max-width: none;
+
+  white-space: nowrap;
+
+  /*
+     Smaller than the previous 76–82px maximum.
+
+     This is intentional.
+
+     The reference title is large, but it still has
+     generous breathing room before the 3D architecture.
+  */
+  font-size:
+    clamp(
+      31px,
+      7.15cqw,
+      49px
+    );
+
+  line-height: 0.98;
+
+  letter-spacing: -0.060em;
+
+  font-weight: 650;
+
+  position: relative;
+
+  z-index: 1001;
+}
+
+
+/* =========================================================
+   WHITE TITLE
+   ========================================================= */
+
+.fs-title-white {
+  margin: 0;
+
+  color:
+    #f7f8fa;
+}
+
+
+/* =========================================================
+   BLUE TITLE
+   ========================================================= */
+
+.fs-title-blue {
+  margin-top: 6px;
+
+  color: #00b7f5;
+
+  background:
+    linear-gradient(
+      90deg,
+      #05caff 0%,
+      #00aaf7 45%,
+      #0878df 100%
+    );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+}
+
+
+/* =========================================================
+   TITLE DIVIDER
+   ========================================================= */
+
+.fs-title-divider {
+  position: absolute;
+
+  left: 7.5%;
+
+  top: 51.8%;
+
+  width: 40px;
+
+  height: 1px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.62
+    );
+
+  z-index: 1000;
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   TAGLINE
+   ========================================================= */
+
+.fs-tagline {
+  position: absolute;
+
+  left: 7.5%;
+
+  top: 56.5%;
+
+  width: 45%;
+
+  z-index: 100;
+
+  font-size:
+    clamp(
+      12px,
+      2.55cqw,
+      19px
+    );
+
+  line-height: 1.48;
+
+  letter-spacing: -0.025em;
+
+  font-weight: 300;
+
+  color:
+    rgba(
+      246,
+      248,
+      250,
+      0.90
+    );
+
+  pointer-events: none;
+}
+
+
+.fs-tagline > div {
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   BOTTOM STATEMENT
+   ========================================================= */
+
+.fs-bottom-copy {
+  position: absolute;
+
+  left: 7.5%;
+
+  bottom: 7.2%;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 5px;
+
+  z-index: 100;
+
+  pointer-events: none;
+}
+
+
+.fs-bottom-copy span {
+  font-size:
+    clamp(
+      5px,
+      1.05cqw,
+      8px
+    );
+
+  line-height: 1.35;
+
+  letter-spacing: 0.28em;
+
+  white-space: nowrap;
+
+  color:
+    rgba(
+      223,
+      230,
+      238,
+      0.68
+    );
+}
+
+
+/* =========================================================
+   BOTTOM BLUE LINE
+   ========================================================= */
+
+.fs-bottom-line {
+  position: absolute;
+
+  left: 28%;
+
+  bottom: 8.05%;
+
+  width: 42px;
+
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0, 125, 255, 0.35),
+      rgba(0, 164, 255, 0.90)
+    );
+
+  z-index: 100;
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   LARGE DESKTOP
+   =========================================================
+
+   IMPORTANT:
+   The old version increased the title to 82px here.
+   That is removed.
+
+   The title remains proportional to the page.
+   ========================================================= */
+
+@media (min-width: 1500px) {
+
+  .fs-left-title {
+    left: 7.5%;
+
+    width: 54%;
+
+    max-width: 54%;
+
+    top: 30.5%;
+
+    z-index: 1000;
+  }
+
+
+  .fs-title-white,
+  .fs-title-blue {
+    font-size:
+      clamp(
+        42px,
+        7.15cqw,
+        55px
+      );
+
+    letter-spacing: -0.060em;
+  }
+
+
+  .fs-title-blue {
+    margin-top: 6px;
+  }
+
+
+  .fs-tagline {
+    top: 56.5%;
+
+    width: 45%;
+
+    font-size:
+      clamp(
+        13px,
+        2.55cqw,
+        20px
+      );
+  }
+}
+
+
+/* =========================================================
+   MEDIUM
+   ========================================================= */
+
+@media (max-width: 1100px) {
+
+  /*
+     IMAGE POSITION PRESERVED FROM YOUR ORIGINAL
+     RESPONSIVE RULE.
+  */
+
+  .fs-left-image-stage {
+    left: 58%;
+    width: 112%;
+  }
+
+
+  .fs-left-title {
+    left: 7.5%;
+
+    width: 53%;
+
+    max-width: 53%;
+
+    top: 30.7%;
+
+    z-index: 1000;
+  }
+
+
+  .fs-title-white,
+  .fs-title-blue {
+    font-size:
+      clamp(
+        28px,
+        7.1cqw,
+        45px
+      );
+  }
+
+
+  .fs-tagline {
+    width: 45%;
+
+    font-size:
+      clamp(
+        11px,
+        2.5cqw,
+        17px
+      );
+  }
+}
+
+
+/* =========================================================
+   SMALL
+   ========================================================= */
+
+@media (max-width: 800px) {
+
+  /*
+     IMAGE POSITION PRESERVED FROM YOUR ORIGINAL
+     RESPONSIVE RULE.
+  */
+
+  .fs-left-image-stage {
+    left: 63%;
+    width: 105%;
+
+    top: 7%;
+    height: 88%;
+  }
+
+
+  .fs-left-title {
+    left: 7.5%;
+
+    width: 52%;
+
+    max-width: 52%;
+
+    top: 31%;
+
+    z-index: 1000;
+  }
+
+
+  .fs-title-white,
+  .fs-title-blue {
+    font-size:
+      clamp(
+        23px,
+        7.0cqw,
+        38px
+      );
+
+    letter-spacing: -0.055em;
+  }
+
+
+  .fs-title-blue {
+    margin-top: 5px;
+  }
+
+
+  .fs-tagline {
+    top: 57%;
+
+    width: 44%;
+
+    font-size:
+      clamp(
+        10px,
+        2.45cqw,
+        15px
+      );
+  }
+}

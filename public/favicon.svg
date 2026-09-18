@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="cover" x1="14" y1="16" x2="32" y2="53" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#18332E"/>
+      <stop offset="1" stop-color="#071815"/>
+    </linearGradient>
+    <linearGradient id="page" x1="31" y1="14" x2="50" y2="52" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF9EA"/>
+      <stop offset="1" stop-color="#E9DCC3"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="28" y1="16" x2="36" y2="52" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E4B66C"/>
+      <stop offset="1" stop-color="#A96F32"/>
+    </linearGradient>
+  </defs>
+
+  <!-- left book cover -->
+  <path d="M10 16.5C17 15 24 17.2 32 23.5V53C24 47.7 17 45.8 10 47.2V16.5Z"
+        fill="url(#cover)"/>
+
+  <!-- right page -->
+  <path d="M32 23.5C39 17.8 45.5 15.3 54 16.5V47.2C46.5 45.8 39.5 47.6 32 53V23.5Z"
+        fill="url(#page)"/>
+
+  <!-- subtle inner page -->
+  <path d="M34.2 24.5C40.2 20 46 18 51.8 18.5V44.9C45.8 44.1 40 46 34.2 49.5V24.5Z"
+        stroke="#C9A76A" stroke-width=".65" opacity=".45"/>
+
+  <!-- spine -->
+  <path d="M32 23.5V53" stroke="url(#gold)" stroke-width="1.8" stroke-linecap="round"/>
+
+  <!-- restrained page fold -->
+  <path d="M32 53C35.2 49.8 37.7 47.8 41.2 46.2"
+        stroke="#B98245" stroke-width=".8" stroke-linecap="round" opacity=".65"/>
+</svg>

@@ -1,0 +1,69 @@
+/* ======================================
+   Global Reset
+====================================== */
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html,
+body,
+#root {
+    width: 100%;
+    height: 100%;
+}
+
+
+body {
+    overflow: hidden;
+
+    font-family:
+        Inter,
+        sans-serif;
+
+    background:
+        #f7f1e5;
+}
+
+
+/* ======================================
+   Viewer
+====================================== */
+
+.viewer {
+    position: relative;
+
+    width: 100vw;
+    height: 100vh;
+
+    overflow: hidden;
+
+    display: grid;
+    place-items: center;
+
+    isolation: isolate;
+}
+
+
+/* ======================================
+   Book Stage
+====================================== */
+
+.viewer__stage {
+    position: relative;
+
+    z-index: 1;
+
+    width: 100%;
+    height: 100%;
+
+    display: grid;
+    place-items: center;
+
+    perspective: 2200px;
+}

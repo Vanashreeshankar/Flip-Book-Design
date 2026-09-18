@@ -1,0 +1,895 @@
+/* =========================================================
+   RIGHT PAGE / HOME BACK
+   ORGANIC EMERALD / GLASS / PAPER VERSION
+   ========================================================= */
+
+.home-back {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+    box-sizing: border-box;
+
+    container-type: size;
+
+    /*
+     * DARK EMERALD BASE
+     *
+     * The right side should feel almost black-green.
+     * Avoid obvious gradient transitions.
+     */
+    background:
+        radial-gradient(
+            ellipse 80% 90% at 20% 8%,
+            rgba(30, 112, 91, 0.10),
+            transparent 68%
+        ),
+        #03352d;
+
+    color: #f1eee5;
+
+    isolation: isolate;
+}
+
+
+/* =========================================================
+   OUTER GREEN PAPER GRAIN
+   ========================================================= */
+
+.home-back::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    z-index: 0;
+
+    pointer-events: none;
+
+    opacity: 0.16;
+
+    background-image:
+        repeating-radial-gradient(
+            circle at 17% 23%,
+            rgba(255,255,255,0.045) 0,
+            rgba(255,255,255,0.045) 0.45px,
+            transparent 0.8px,
+            transparent 5px
+        ),
+        repeating-linear-gradient(
+            118deg,
+            rgba(255,255,255,0.025) 0,
+            rgba(255,255,255,0.025) 1px,
+            transparent 1px,
+            transparent 9px
+        ),
+        repeating-linear-gradient(
+            23deg,
+            rgba(0,0,0,0.025) 0,
+            rgba(0,0,0,0.025) 1px,
+            transparent 1px,
+            transparent 13px
+        );
+}
+
+
+/* =========================================================
+   CENTRAL SPINE / BOOK INNER SHADOW
+   ========================================================= */
+
+.home-back::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    width: 20px;
+    height: 100%;
+
+    z-index: 50;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0,0,0,0.38) 0,
+            rgba(0,0,0,0.18) 22%,
+            rgba(0,0,0,0.07) 46%,
+            rgba(255,255,255,0.06) 70%,
+            transparent 100%
+        );
+}
+
+
+/* =========================================================
+   PAGE NUMBER
+   ========================================================= */
+
+.back-number {
+    position: absolute;
+
+    top: 7%;
+    right: 8%;
+
+    z-index: 40;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+}
+
+
+.back-number span {
+    width:
+        clamp(
+            20px,
+            8cqw,
+            34px
+        );
+
+    height: 1px;
+
+    background:
+        rgba(
+            241,
+            238,
+            229,
+            0.56
+        );
+}
+
+
+.back-number b {
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 22px;
+
+    line-height: 1;
+
+    font-weight: 400;
+
+    letter-spacing: -0.03em;
+
+    color: #f1eee5;
+}
+
+
+/* =========================================================
+   MAIN GREEN PAPER SHEET
+   =========================================================
+
+   This is deliberately NOT a simple gradient.
+
+   It combines:
+   - deep material
+   - soft reflected light
+   - subtle emerald variation
+   - paper grain
+   ========================================================= */
+
+.back-curved-layer {
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    width: 67%;
+    height: 100%;
+
+    z-index: 2;
+
+    box-sizing: border-box;
+
+    overflow: hidden;
+
+    background:
+
+        /* soft reflected light near upper-left */
+        radial-gradient(
+            ellipse 60% 48% at 24% 12%,
+            rgba(61, 160, 133, 0.24),
+            transparent 62%
+        ),
+
+        /* restrained vertical material variation */
+        linear-gradient(
+            90deg,
+            rgba(18, 111, 91, 0.10) 0%,
+            rgba(31, 139, 113, 0.13) 38%,
+            rgba(8, 83, 68, 0.02) 60%,
+            rgba(0, 45, 37, 0.12) 100%
+        ),
+
+        /* actual deep emerald material */
+        linear-gradient(
+            112deg,
+            #0a6252 0%,
+            #095949 42%,
+            #06493d 72%,
+            #033a31 100%
+        );
+
+    /*
+     * Large organic outer curve.
+     */
+    border-radius:
+        0
+        0
+        39%
+        0;
+
+    border-right:
+        1px solid
+        rgba(
+            91,
+            186,
+            158,
+            0.34
+        );
+
+    /*
+     * Physical sheet depth.
+     */
+    box-shadow:
+        8px 0 18px rgba(0,0,0,0.10),
+        17px 0 30px rgba(0,0,0,0.08),
+        0 10px 24px rgba(0,0,0,0.08);
+
+    isolation: isolate;
+}
+
+
+/* =========================================================
+   GREEN PAPER TEXTURE
+   ========================================================= */
+
+.back-curved-layer::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 1;
+
+    pointer-events: none;
+
+    opacity: 0.17;
+
+    background-image:
+
+        /* micro grain */
+        repeating-radial-gradient(
+            circle at 12% 18%,
+            rgba(255,255,255,0.055) 0,
+            rgba(255,255,255,0.055) 0.45px,
+            transparent 0.75px,
+            transparent 4.8px
+        ),
+
+        /* very fine paper fibers */
+        repeating-linear-gradient(
+            108deg,
+            rgba(255,255,255,0.025) 0,
+            rgba(255,255,255,0.025) 1px,
+            transparent 1px,
+            transparent 8px
+        ),
+
+        repeating-linear-gradient(
+            24deg,
+            rgba(0,0,0,0.022) 0,
+            rgba(0,0,0,0.022) 1px,
+            transparent 1px,
+            transparent 12px
+        );
+}
+
+
+/* =========================================================
+   TRANSLUCENT GLASS / CURVED GREEN BAND
+   =========================================================
+
+   This is intentionally subtle.
+
+   It should feel like translucent material sitting
+   between two sheets — NOT another gradient rectangle.
+   ========================================================= */
+
+.back-curved-layer::after {
+    content: "";
+
+    position: absolute;
+
+    left: 47%;
+    top: -1%;
+
+    width: 31%;
+    height: 102%;
+
+    z-index: 5;
+
+    pointer-events: none;
+
+    background:
+
+        radial-gradient(
+            ellipse at 18% 35%,
+            rgba(102, 202, 176, 0.10),
+            transparent 54%
+        ),
+
+        linear-gradient(
+            90deg,
+            rgba(62, 175, 148, 0.25),
+            rgba(31, 137, 114, 0.16) 45%,
+            rgba(2, 61, 50, 0.08) 100%
+        );
+
+    /*
+     * Organic sweeping curve.
+     */
+    border-radius:
+        0
+        0
+        55%
+        0;
+
+    border-left:
+        1px solid
+        rgba(
+            107,
+            209,
+            181,
+            0.26
+        );
+
+    border-right:
+        1px solid
+        rgba(
+            0,
+            35,
+            29,
+            0.15
+        );
+
+    /*
+     * Glass depth.
+     */
+    box-shadow:
+        inset 8px 0 18px rgba(255,255,255,0.035),
+        inset -12px 0 25px rgba(0,0,0,0.10),
+        5px 0 16px rgba(0,0,0,0.055);
+
+    backdrop-filter:
+        blur(4px);
+
+    -webkit-backdrop-filter:
+        blur(4px);
+}
+
+
+/* =========================================================
+   IVORY PAGE
+   ========================================================= */
+
+.back-ivory-page {
+    position: absolute;
+
+    left: 0;
+    top: 7.5%;
+
+    width: 48%;
+    height: 84%;
+
+    z-index: 8;
+
+    box-sizing: border-box;
+
+    overflow: hidden;
+
+    background:
+
+        /* warm reflected paper light */
+        radial-gradient(
+            ellipse 65% 55% at 20% 15%,
+            rgba(255,255,255,0.78),
+            transparent 60%
+        ),
+
+        /* subtle lower paper shadow */
+        radial-gradient(
+            ellipse 65% 48% at 72% 88%,
+            rgba(186,181,167,0.20),
+            transparent 65%
+        ),
+
+        linear-gradient(
+            110deg,
+            #f5f2e9 0%,
+            #f1eee5 66%,
+            #ebe7dc 100%
+        );
+
+    color:
+        #102821;
+
+    /*
+     * More organic than a simple 22% radius.
+     */
+    border-radius:
+        0
+        24%
+        25%
+        0;
+
+    border-right:
+        1px solid
+        rgba(
+            255,
+            255,
+            255,
+            0.90
+        );
+
+    /*
+     * Physical page edge.
+     */
+    box-shadow:
+
+        /* dark contact shadow */
+        8px 0 18px
+        rgba(
+            0,
+            27,
+            21,
+            0.17
+        ),
+
+        15px 0 25px
+        rgba(
+            0,
+            25,
+            20,
+            0.10
+        ),
+
+        /* bottom thickness */
+        0 5px 0
+        rgba(
+            208,
+            203,
+            190,
+            0.65
+        ),
+
+        0 9px 15px
+        rgba(
+            0,
+            22,
+            18,
+            0.13
+        ),
+
+        /* inner page shading */
+        inset
+        -8px 0 16px
+        rgba(
+            10,
+            42,
+            34,
+            0.07
+        );
+
+    isolation: isolate;
+}
+
+
+/* =========================================================
+   IVORY PAPER GRAIN
+   ========================================================= */
+
+.back-ivory-page::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 1;
+
+    pointer-events: none;
+
+    opacity: 0.13;
+
+    background-image:
+
+        repeating-radial-gradient(
+            circle at 20% 15%,
+            rgba(35,42,37,0.065) 0,
+            rgba(35,42,37,0.065) 0.45px,
+            transparent 0.7px,
+            transparent 4.5px
+        ),
+
+        repeating-linear-gradient(
+            104deg,
+            rgba(80,76,67,0.018) 0,
+            rgba(80,76,67,0.018) 1px,
+            transparent 1px,
+            transparent 9px
+        );
+}
+
+
+/* =========================================================
+   IVORY EDGE LIGHT + CURVE DEPTH
+   ========================================================= */
+
+.back-ivory-page::after {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    right: 0;
+
+    width: 18%;
+    height: 100%;
+
+    z-index: 3;
+
+    pointer-events: none;
+
+    background:
+
+        /*
+         * soft highlight
+         */
+        linear-gradient(
+            90deg,
+            transparent 0%,
+            rgba(255,255,255,0.04) 32%,
+            rgba(255,255,255,0.28) 100%
+        );
+
+    /*
+     * subtle curved edge highlight
+     */
+    box-shadow:
+        inset -1px 0
+        rgba(255,255,255,0.55);
+}
+
+
+/* =========================================================
+   IVORY CONTENT
+   ========================================================= */
+
+.back-page-content {
+    position: absolute;
+
+    left: 19%;
+    top: 29%;
+
+    width: 67%;
+
+    z-index: 10;
+}
+
+
+/* =========================================================
+   SMALL LINE
+   ========================================================= */
+
+.back-small-line {
+    width:
+        clamp(
+            25px,
+            10cqw,
+            43px
+        );
+
+    height: 1px;
+
+    margin-bottom: 12%;
+
+    background:
+        #19352d;
+
+    opacity: 0.85;
+}
+
+
+/* =========================================================
+   MAIN MESSAGE
+   ========================================================= */
+
+.back-message {
+    display: flex;
+
+    flex-direction: column;
+
+    gap:
+        clamp(
+            5px,
+            2.1cqw,
+            10px
+        );
+
+    font-size:
+        clamp(
+            8px,
+            3.1cqw,
+            17px
+        );
+
+    line-height: 1.34;
+
+    letter-spacing: 0.21em;
+
+    white-space: nowrap;
+}
+
+
+.back-message .accent {
+    color:
+        #087e6e;
+
+    font-weight: 500;
+}
+
+
+/* =========================================================
+   IVORY BOTTOM WORDS
+   ========================================================= */
+
+.back-keywords {
+    position: absolute;
+
+    left: 19%;
+    bottom: 9%;
+
+    z-index: 10;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap:
+        clamp(
+            4px,
+            1.6cqw,
+            8px
+        );
+
+    font-size:
+        clamp(
+            5px,
+            1.8cqw,
+            9px
+        );
+
+    line-height: 1.25;
+
+    letter-spacing: 0.30em;
+
+    color:
+        #203932;
+}
+
+
+/* =========================================================
+   RIGHT DARK FIELD
+   ========================================================= */
+
+.back-right-copy {
+    position: absolute;
+
+    top: 38%;
+    right: 8%;
+
+    width: 24%;
+
+    z-index: 20;
+
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   TOP COPY
+   ========================================================= */
+
+.back-copy-top {
+    display: flex;
+
+    flex-direction: column;
+
+    gap:
+        clamp(
+            5px,
+            2.1cqw,
+            10px
+        );
+
+    font-size:
+        clamp(
+            5px,
+            1.9cqw,
+            9px
+        );
+
+    line-height: 1.25;
+
+    letter-spacing: 0.30em;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   TOP VERTICAL LINE
+   ========================================================= */
+
+.back-copy-line {
+    position: absolute;
+
+    top: -108px;
+    right: 50%;
+
+    width: 1px;
+    height: 86px;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(241,238,229,0.02),
+            rgba(241,238,229,0.48)
+        );
+}
+
+
+/* =========================================================
+   BOTTOM RIGHT COPY
+   ========================================================= */
+
+.back-copy-bottom {
+    position: absolute;
+
+    top:
+        clamp(
+            170px,
+            40cqh,
+            300px
+        );
+
+    right: 0;
+
+    width: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-end;
+
+    gap:
+        clamp(
+            4px,
+            1.6cqw,
+            8px
+        );
+
+    font-size:
+        clamp(
+            5px,
+            1.75cqw,
+            9px
+        );
+
+    line-height: 1.25;
+
+    letter-spacing: 0.27em;
+
+    text-align: right;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   BOTTOM RIGHT LINE
+   ========================================================= */
+
+.back-copy-bottom-line {
+    position: absolute;
+
+    top:
+        calc(
+            clamp(
+                170px,
+                40cqh,
+                300px
+            ) + 70px
+        );
+
+    right: 0;
+
+    width:
+        clamp(
+            18px,
+            8cqw,
+            32px
+        );
+
+    height: 1px;
+
+    background:
+        rgba(
+            241,
+            238,
+            229,
+            0.52
+        );
+}
+
+
+/* =========================================================
+   SHORT SCREENS
+   ========================================================= */
+
+@media (max-height: 650px) {
+
+    .back-curved-layer {
+        top: 0;
+        height: 100%;
+        width: 67%;
+    }
+
+    .back-ivory-page {
+        top: 6%;
+        height: 87%;
+        width: 48%;
+    }
+
+    .back-page-content {
+        top: 26%;
+    }
+
+    .back-copy-line {
+        top: -78px;
+        height: 64px;
+    }
+}
+
+
+/* =========================================================
+   SMALL WIDTH
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+    .back-curved-layer {
+        width: 68%;
+    }
+
+    .back-ivory-page {
+        width: 49%;
+    }
+
+    .back-right-copy {
+        right: 7%;
+        width: 23%;
+    }
+}

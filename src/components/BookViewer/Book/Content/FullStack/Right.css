@@ -1,0 +1,824 @@
+/* =========================================================
+   FULL STACK — RIGHT PAGE
+   ========================================================= */
+
+.fs-right {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  overflow: visible;
+
+  box-sizing: border-box;
+
+  color: #f5f8fb;
+
+  font-family:
+    Inter,
+    "Helvetica Neue",
+    Arial,
+    sans-serif;
+
+  background:
+    radial-gradient(
+      ellipse at 18% 48%,
+      rgba(0, 100, 230, 0.20),
+      transparent 44%
+    ),
+    radial-gradient(
+      ellipse at 65% 38%,
+      rgba(0, 70, 170, 0.12),
+      transparent 52%
+    ),
+    linear-gradient(
+      145deg,
+      #080d13 0%,
+      #06111c 46%,
+      #03070d 100%
+    );
+
+  container-type: inline-size;
+
+  isolation: isolate;
+
+  z-index: 2;
+}
+
+
+/* =========================================================
+   BACKGROUND LIGHT
+   ========================================================= */
+
+.fs-light-glow {
+  position: absolute;
+
+  left: -30%;
+  top: 4%;
+
+  width: 110%;
+  height: 94%;
+
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      ellipse at 45% 48%,
+      rgba(0, 126, 255, 0.30),
+      rgba(0, 72, 180, 0.10) 38%,
+      transparent 73%
+    );
+
+  filter: blur(40px);
+
+  opacity: 0.90;
+
+  z-index: 0;
+}
+
+
+/* =========================================================
+   BLUE LIGHT
+   ========================================================= */
+
+.fs-vertical-light {
+  position: absolute;
+
+  top: -8%;
+  bottom: -8%;
+
+  left: 17%;
+
+  width: 2px;
+
+  background:
+    linear-gradient(
+      to bottom,
+      transparent,
+      rgba(0, 121, 255, 0.48) 18%,
+      #009dff 44%,
+      rgba(0, 142, 255, 0.82) 67%,
+      transparent
+    );
+
+  box-shadow:
+    0 0 7px rgba(0, 157, 255, 0.95),
+    0 0 20px rgba(0, 129, 255, 0.62),
+    0 0 55px rgba(0, 108, 255, 0.32);
+
+  opacity: 0.70;
+
+  pointer-events: none;
+
+  z-index: 1;
+}
+
+
+.fs-vertical-light-soft {
+  position: absolute;
+
+  top: 8%;
+  bottom: 8%;
+
+  left: 42%;
+
+  width: 1px;
+
+  background:
+    linear-gradient(
+      to bottom,
+      transparent,
+      rgba(0, 120, 255, 0.20),
+      rgba(0, 144, 255, 0.48),
+      transparent
+    );
+
+  box-shadow:
+    0 0 20px rgba(0, 132, 255, 0.24);
+
+  opacity: 0.42;
+
+  pointer-events: none;
+
+  z-index: 1;
+}
+
+
+/* =========================================================
+   SUBTLE GRID
+   ========================================================= */
+
+.fs-grid {
+  position: absolute;
+
+  left: 4%;
+  right: 5%;
+
+  top: 10%;
+  bottom: 7%;
+
+  pointer-events: none;
+
+  opacity: 0.07;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent 49.8%,
+      rgba(67, 155, 230, 0.22) 50%,
+      transparent 50.2%
+    ),
+    linear-gradient(
+      0deg,
+      transparent 49.8%,
+      rgba(67, 155, 230, 0.16) 50%,
+      transparent 50.2%
+    );
+
+  z-index: 1;
+}
+
+
+/* =========================================================
+   IMAGE STAGE
+
+   !!! EXACTLY PRESERVED !!!
+   ========================================================= */
+
+.fs-image-stage {
+  position: absolute;
+
+  left: -65%;
+  top: -2%;
+
+  width: 178%;
+  height: 102%;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  pointer-events: none;
+
+  transform-origin: center center;
+
+  z-index: 15;
+
+  overflow: visible;
+}
+
+
+/* =========================================================
+   ARCHITECTURE IMAGE
+
+   !!! EXACTLY PRESERVED !!!
+   ========================================================= */
+
+.fs-architecture-image {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+
+  object-position: center center;
+
+  max-width: none;
+
+  user-select: none;
+
+  -webkit-user-drag: none;
+
+  pointer-events: none;
+
+  mix-blend-mode: screen;
+
+  filter:
+    drop-shadow(
+      0 22px 35px
+      rgba(0, 0, 0, 0.55)
+    )
+    brightness(1.02)
+    contrast(1.04);
+}
+
+
+/* =========================================================
+   =========================================================
+   INVISIBLE HOVER HOTSPOTS
+   =========================================================
+   ========================================================= */
+
+.fs-tech-hotspot {
+  position: absolute;
+
+  left: 22%;
+
+  width: 49%;
+
+  background: transparent;
+
+  border: none;
+
+  cursor: pointer;
+
+  pointer-events: auto;
+
+  z-index: 50;
+}
+
+
+/* FRONTEND */
+.fs-hotspot-frontend {
+  top: 14%;
+  height: 14%;
+}
+
+
+/* BACKEND */
+.fs-hotspot-backend {
+  top: 29%;
+  height: 14%;
+}
+
+
+/* DATABASE */
+.fs-hotspot-database {
+  top: 44%;
+  height: 14%;
+}
+
+
+/* DEPLOY */
+.fs-hotspot-deploy {
+  top: 57%;
+  height: 15%;
+}
+
+
+/* =========================================================
+   TOP RIGHT HEADING
+   ========================================================= */
+
+.fs-right-heading {
+  position: absolute;
+
+  top: 5.5%;
+  right: 7%;
+
+  width: 27%;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-end;
+
+  gap: 3px;
+
+  text-align: right;
+
+  z-index: 80;
+
+  pointer-events: none;
+}
+
+
+.fs-right-heading span {
+  display: block;
+
+  font-size:
+    clamp(
+      6px,
+      1.65cqw,
+      11px
+    );
+
+  line-height: 1.35;
+
+  letter-spacing: 0.25em;
+
+  white-space: nowrap;
+
+  color:
+    rgba(
+      244,
+      247,
+      250,
+      0.76
+    );
+}
+
+
+.fs-right-heading-line {
+  width: 32px;
+
+  height: 1px;
+
+  margin-top: 8px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.45
+    );
+}
+
+
+/* =========================================================
+   TECHNOLOGY BLOCK
+   ========================================================= */
+
+.fs-tech-block {
+  position: absolute;
+
+  left: 63%;
+
+  width: 28%;
+
+  min-width: 0;
+
+  display: flex;
+
+  align-items: flex-start;
+
+  box-sizing: border-box;
+
+  z-index: 90;
+
+  pointer-events: none;
+
+  opacity: 0;
+
+  transform: translateX(7px);
+
+  will-change:
+    opacity,
+    transform;
+}
+
+
+/* =========================================================
+   CONTINUOUS SVG CONNECTOR
+   ========================================================= */
+
+.fs-tech-connector-svg {
+  position: relative;
+
+  display: block;
+
+  flex: 0 0 auto;
+
+  overflow: visible;
+
+  pointer-events: none;
+
+  /*
+    IMPORTANT:
+    The SVG itself contains ONE continuous path.
+    Therefore there is no CSS gap between
+    vertical and horizontal portions.
+  */
+
+  width: 54px;
+
+  height: 78px;
+}
+
+
+/* ---------------------------------------------------------
+   FRONTEND CONNECTOR
+   --------------------------------------------------------- */
+
+.fs-tech-connector-frontend {
+  width: 52px;
+
+  height: 30px;
+
+  margin-top: 0;
+
+  margin-right: 5px;
+}
+
+
+/* ---------------------------------------------------------
+   OTHER CONNECTORS
+   --------------------------------------------------------- */
+
+.fs-tech-connector-backend,
+.fs-tech-connector-database,
+.fs-tech-connector-deploy {
+  margin-top: -56px;
+
+  margin-right: 5px;
+}
+
+
+/* =========================================================
+   FLUORESCENT CONNECTOR PATH
+   ========================================================= */
+
+.fs-tech-connector-svg path {
+  fill: none;
+
+  stroke:
+    rgba(0, 190, 255, 0.95);
+
+  stroke-width: 1.15;
+
+  stroke-linecap: round;
+
+  stroke-linejoin: round;
+
+  vector-effect: non-scaling-stroke;
+
+  filter:
+    drop-shadow(
+      0 0 2px
+      rgba(0, 205, 255, 1)
+    )
+    drop-shadow(
+      0 0 5px
+      rgba(0, 150, 255, 0.95)
+    )
+    drop-shadow(
+      0 0 11px
+      rgba(0, 120, 255, 0.70)
+    );
+}
+
+
+/* brighter core */
+.fs-tech-block.is-active
+  .fs-tech-connector-svg path {
+  stroke:
+    rgba(72, 215, 255, 1);
+
+  stroke-width: 1.25;
+
+  filter:
+    drop-shadow(
+      0 0 2px
+      rgba(120, 230, 255, 1)
+    )
+    drop-shadow(
+      0 0 6px
+      rgba(0, 185, 255, 1)
+    )
+    drop-shadow(
+      0 0 14px
+      rgba(0, 130, 255, 0.90)
+    );
+}
+
+
+/* =========================================================
+   TECHNOLOGY TEXT
+   ========================================================= */
+
+.fs-tech-items {
+  min-width: 0;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-start;
+
+  gap: 2px;
+
+  padding-top: 0;
+
+  overflow: visible;
+}
+
+
+.fs-tech-items span {
+  display: block;
+
+  width: 100%;
+
+  max-width: 100%;
+
+  overflow: visible;
+
+  text-overflow: clip;
+
+  white-space: nowrap;
+
+  font-size:
+    clamp(
+      7px,
+      2.15cqw,
+      15px
+    );
+
+  line-height: 1.30;
+
+  font-size: 10px;
+
+  font-weight: 250;
+
+  letter-spacing: -0.012em;
+
+  color:
+    rgba(
+      245,
+      248,
+      252,
+      0.92
+    );
+
+  text-shadow:
+    0 0 5px
+    rgba(0, 120, 255, 0.18);
+}
+
+
+/* =========================================================
+   FRONTEND
+
+   Frontend remains beside its layer.
+   ========================================================= */
+
+.fs-tech-frontend {
+  top: 16.2%;
+}
+
+
+/* =========================================================
+   BACKEND
+
+   Text starts BELOW backend layer.
+   ========================================================= */
+
+.fs-tech-backend {
+  top: 43.2%;
+}
+
+
+/* =========================================================
+   DATABASE
+
+   Text starts BELOW database layer.
+   ========================================================= */
+
+.fs-tech-database {
+  top: 58.2%;
+}
+
+
+/* =========================================================
+   DEPLOY
+
+   Text starts BELOW deploy layer.
+   ========================================================= */
+
+.fs-tech-deploy {
+  top: 72.0%;
+}
+
+
+/* =========================================================
+   QUOTE
+   ========================================================= */
+
+.fs-quote {
+  position: absolute;
+
+  right: 7%;
+
+  bottom: 8.8%;
+
+  width: 27%;
+
+  z-index: 80;
+
+  pointer-events: none;
+}
+
+
+.fs-quote-mark {
+  position: absolute;
+
+  left: -15px;
+  top: -8px;
+
+  font-size:
+    clamp(
+      16px,
+      4cqw,
+      27px
+    );
+
+  line-height: 1;
+
+  color: #0098ff;
+
+  text-shadow:
+    0 0 9px
+    rgba(0, 151, 255, 0.70);
+}
+
+
+.fs-quote-line {
+  width:
+    clamp(
+      25px,
+      7cqw,
+      55px
+    );
+
+  height: 1px;
+
+  margin-bottom: 7px;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0, 151, 255, 0.90),
+      rgba(255, 255, 255, 0.25)
+    );
+}
+
+
+.fs-quote-text {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 3px;
+}
+
+
+.fs-quote-text span {
+  display: block;
+
+  font-size:
+    clamp(
+      5px,
+      1.45cqw,
+      10px
+    );
+
+  line-height: 1.35;
+
+  letter-spacing: 0.16em;
+
+  white-space: nowrap;
+
+  color:
+    rgba(
+      226,
+      234,
+      242,
+      0.70
+    );
+}
+
+
+/* =========================================================
+   PAGE NUMBER
+   ========================================================= */
+
+.fs-right-footer {
+  position: absolute;
+
+  right: 7%;
+
+  bottom: 3.8%;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  z-index: 80;
+
+  pointer-events: none;
+}
+
+
+.fs-footer-line {
+  width:
+    clamp(
+      24px,
+      6cqw,
+      45px
+    );
+
+  height: 1px;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.32
+    );
+}
+
+
+.fs-right-footer span {
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1200px) {
+
+  .fs-tech-block {
+    left: 63%;
+    width: 28%;
+  }
+
+}
+
+
+@media (max-width: 900px) {
+
+  .fs-tech-block {
+    left: 61%;
+    width: 31%;
+  }
+
+  .fs-tech-connector-svg {
+    width: 40px;
+  }
+
+  .fs-tech-hotspot {
+    left: 19%;
+    width: 53%;
+  }
+
+}
+
+
+@media (max-width: 700px) {
+
+  .fs-tech-block {
+    left: 59%;
+    width: 34%;
+  }
+
+  .fs-tech-items span {
+    font-size: 7px;
+  }
+
+  .fs-tech-hotspot {
+    left: 16%;
+    width: 57%;
+  }
+
+}

@@ -1,0 +1,919 @@
+/* =========================================================
+   FLIP ENGINE
+========================================================= */
+
+.flip-engine {
+    position: absolute;
+
+    top: 0;
+    left: -100%;
+
+    width: 200%;
+    height: 100%;
+
+    perspective: 2600px;
+
+    transform-style:
+        preserve-3d;
+
+    overflow: visible;
+
+    z-index: 20;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   PAGEFLIP BOOK WRAPPER
+========================================================= */
+
+.flip-engine__book {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    margin: 0;
+    padding: 0;
+
+    overflow: visible;
+
+    transform-style:
+        preserve-3d;
+
+    pointer-events: auto;
+
+    z-index: 100;
+}
+
+
+/* =========================================================
+   REACT-PAGEFLIP ROOT
+========================================================= */
+
+.flip-engine__book
+.flip-page-book {
+    position: absolute !important;
+
+    top: 0 !important;
+    left: 0 !important;
+
+    width: 100% !important;
+    height: 100% !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    overflow: visible !important;
+
+    transform:
+        none !important;
+
+    transform-style:
+        preserve-3d;
+
+    box-sizing:
+        border-box;
+
+    pointer-events:
+        auto;
+}
+
+
+/* =========================================================
+   REACT-PAGEFLIP INTERNAL WRAPPER
+========================================================= */
+
+.flip-engine__book
+.flip-page-book > div {
+    box-sizing:
+        border-box;
+}
+
+
+/* =========================================================
+   PAGE
+========================================================= */
+
+.flip-page {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    box-sizing:
+        border-box;
+
+    overflow: hidden;
+
+    background:
+        #ffffff;
+
+    border-radius:
+        10px;
+
+    display: flex;
+
+    backface-visibility:
+        hidden;
+
+    -webkit-backface-visibility:
+        hidden;
+
+    transform-style:
+        preserve-3d;
+
+    user-select:
+        none;
+
+    -webkit-user-select:
+        none;
+}
+
+
+/* =========================================================
+   FRONT PAGE
+========================================================= */
+
+.flip-page--front {
+    background:
+        #ffffff;
+}
+
+
+/* =========================================================
+   BACK PAGE
+========================================================= */
+
+.flip-page--back {
+    background:
+        #ffffff;
+}
+
+
+/* =========================================================
+   PAGE SURFACE
+========================================================= */
+
+.flip-page__surface {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+
+    background:
+        #ffffff;
+
+    border-radius:
+        10px;
+
+    box-sizing:
+        border-box;
+
+    transform-style:
+        preserve-3d;
+
+    backface-visibility:
+        hidden;
+
+    -webkit-backface-visibility:
+        hidden;
+
+    isolation:
+        isolate;
+}
+
+
+/* =========================================================
+   FRONT PAGE SURFACE
+========================================================= */
+
+.flip-page--front
+.flip-page__surface {
+    border-radius:
+        10px
+        10px
+        10px
+        10px;
+
+    background:
+        #ffffff;
+
+    box-shadow:
+        0 8px 24px
+        rgba(0, 0, 0, 0.08);
+}
+
+
+/* =========================================================
+   BACK PAGE SURFACE
+========================================================= */
+
+.flip-page--back
+.flip-page__surface {
+    border-radius:
+        10px
+        0
+        0
+        10px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #f1f1f1 0%,
+            #ffffff 18%,
+            #ffffff 100%
+        );
+
+    box-shadow:
+        inset 1px 0 3px
+        rgba(0, 0, 0, 0.08),
+
+        0 8px 24px
+        rgba(0, 0, 0, 0.08);
+}
+
+
+/* =========================================================
+   PAGE CONTENT
+========================================================= */
+
+.flip-page__content {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    z-index: 2;
+
+    overflow: hidden;
+
+    box-sizing:
+        border-box;
+}
+
+
+/* =========================================================
+   RESTING PAPER VOLUME
+========================================================= */
+
+/*
+ * These pseudo-elements create visual depth only.
+ *
+ * No transform is applied to the actual page.
+ *
+ * react-pageflip therefore keeps complete control
+ * of the existing drag and curl animation.
+ */
+
+
+/* =========================================================
+   FRONT / RIGHT PAGE CURVE
+========================================================= */
+
+.flip-page--front
+.flip-page__surface::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 3;
+
+    pointer-events:
+        none;
+
+    background:
+
+        /*
+         * Darker compression near the center spine.
+         */
+
+        radial-gradient(
+            ellipse 90% 34%
+            at 0% 52%,
+
+            rgba(0, 0, 0, 0.14) 0%,
+
+            rgba(0, 0, 0, 0.075) 20%,
+
+            rgba(0, 0, 0, 0.025) 48%,
+
+            transparent 75%
+        ),
+
+        /*
+         * Soft paper highlight.
+         */
+
+        radial-gradient(
+            ellipse 75% 24%
+            at 48% 0%,
+
+            rgba(255, 255, 255, 0.20) 0%,
+
+            rgba(255, 255, 255, 0.06) 42%,
+
+            transparent 78%
+        ),
+
+        /*
+         * Subtle lower paper depth.
+         */
+
+        radial-gradient(
+            ellipse 80% 20%
+            at 50% 100%,
+
+            rgba(0, 0, 0, 0.055) 0%,
+
+            transparent 76%
+        );
+}
+
+
+/* =========================================================
+   LEFT PAGE CURVE
+========================================================= */
+
+.flip-page--back
+.flip-page__surface::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 3;
+
+    pointer-events:
+        none;
+
+    background:
+
+        /*
+         * Mirrored center compression.
+         */
+
+        radial-gradient(
+            ellipse 90% 34%
+            at 100% 52%,
+
+            rgba(0, 0, 0, 0.15) 0%,
+
+            rgba(0, 0, 0, 0.08) 20%,
+
+            rgba(0, 0, 0, 0.025) 48%,
+
+            transparent 75%
+        ),
+
+        /*
+         * Soft upper highlight.
+         */
+
+        radial-gradient(
+            ellipse 75% 24%
+            at 52% 0%,
+
+            rgba(255, 255, 255, 0.18) 0%,
+
+            rgba(255, 255, 255, 0.055) 42%,
+
+            transparent 78%
+        ),
+
+        /*
+         * Lower paper depth.
+         */
+
+        radial-gradient(
+            ellipse 80% 20%
+            at 50% 100%,
+
+            rgba(0, 0, 0, 0.06) 0%,
+
+            transparent 76%
+        );
+}
+
+
+/* =========================================================
+   CENTER GUTTER
+========================================================= */
+
+/*
+ * Creates the darker compressed area exactly
+ * where both pages meet.
+ */
+
+
+/* Right page */
+
+.flip-page--front
+.flip-page__surface::after {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 15%;
+    height: 100%;
+
+    z-index: 4;
+
+    pointer-events:
+        none;
+
+    background:
+        linear-gradient(
+            90deg,
+
+            rgba(0, 0, 0, 0.17) 0%,
+
+            rgba(0, 0, 0, 0.085) 18%,
+
+            rgba(0, 0, 0, 0.025) 48%,
+
+            transparent 100%
+        );
+}
+
+
+/* Left page */
+
+.flip-page--back
+.flip-page__surface::after {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    right: 0;
+
+    width: 15%;
+    height: 100%;
+
+    z-index: 4;
+
+    pointer-events:
+        none;
+
+    background:
+        linear-gradient(
+            -90deg,
+
+            rgba(0, 0, 0, 0.18) 0%,
+
+            rgba(0, 0, 0, 0.09) 18%,
+
+            rgba(0, 0, 0, 0.025) 48%,
+
+            transparent 100%
+        );
+}
+
+
+/* =========================================================
+   PAGE LIGHT
+========================================================= */
+
+.flip-page__light {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    pointer-events: none;
+
+    z-index: 5;
+
+    background:
+        linear-gradient(
+            90deg,
+
+            rgba(255, 255, 255, 0.025),
+
+            transparent 18%,
+
+            transparent 82%,
+
+            rgba(0, 0, 0, 0.035)
+        );
+}
+
+
+/* =========================================================
+   BLANK BOUNDARY PAGES
+========================================================= */
+
+.flip-page--blank {
+    background:
+        transparent !important;
+
+    box-shadow:
+        none !important;
+
+    border:
+        0 !important;
+
+    opacity:
+        0 !important;
+
+    visibility:
+        hidden !important;
+
+    pointer-events:
+        none !important;
+}
+
+
+/* =========================================================
+   PAGEFLIP GENERATED ELEMENTS
+========================================================= */
+
+.flip-engine__book
+.stf__parent {
+    overflow:
+        visible !important;
+
+    transform-style:
+        preserve-3d;
+}
+
+
+.flip-engine__book
+.stf__block {
+    overflow:
+        visible !important;
+
+    transform-style:
+        preserve-3d;
+}
+
+
+.flip-engine__book
+.stf__item {
+    overflow:
+        visible !important;
+
+    transform-style:
+        preserve-3d;
+}
+
+
+/* =========================================================
+   FRONT COVER CLOSE AREA
+========================================================= */
+
+.flip-engine__close-zone {
+    position: absolute;
+
+    left: 0;
+    top: 0;
+
+    width: 50%;
+    height: 100%;
+
+    padding: 0;
+    margin: 0;
+
+    border: 0;
+
+    background:
+        transparent;
+
+    pointer-events:
+        auto;
+
+    cursor:
+        pointer;
+
+    z-index:
+        1500;
+}
+
+
+.flip-engine__close-zone:focus {
+    outline:
+        none;
+}
+
+
+/* =========================================================
+   PAGEFLIP FRONT COVER BACK-FACE BOUNDARY
+========================================================= */
+
+/*
+ * Hidden during normal operation.
+ *
+ * The real Cover component already supplies the front-cover back
+ * face during the normal opening animation. Keeping this PageFlip
+ * boundary hidden there prevents the duplicate/twinkling face.
+ */
+.flip-page--front-cover-back {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+
+    background: transparent !important;
+
+    border: 0 !important;
+    box-shadow: none !important;
+
+    opacity: 0 !important;
+    visibility: hidden !important;
+
+    pointer-events: none !important;
+
+    transform-style: preserve-3d;
+
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+
+
+/*
+ * Only the first-sheet reverse curl exposes this destination.
+ *
+ * No percentage/transition is manually applied here. PageFlip owns
+ * the transform, so the visible amount follows the user's drag:
+ *
+ * 20% drag -> approximately 20% cover-back visible
+ * 50% drag -> approximately 50% cover-back visible
+ * 80% drag -> approximately 80% cover-back visible
+ * 100%     -> complete cover-back face
+ */
+.flip-engine--front-cover-reverse
+.flip-page--front-cover-back {
+    opacity: 1 !important;
+    visibility: visible !important;
+    background: #063F44 !important;
+}
+
+
+.flip-engine--front-cover-reverse
+.flip-page--front-cover-back
+.flip-cover-back-face {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background: #063F44 !important;
+
+    border-radius: 10px;
+
+    pointer-events: none !important;
+
+    transform: translateZ(0.5px);
+}
+
+
+/* =========================================================
+   PAGEFLIP BACK COVER BOUNDARY
+========================================================= */
+
+/*
+ * The final PageFlip boundary is a real visual BackCover
+ * face instead of an invisible blank page.
+ *
+ * This is the crucial difference: react-pageflip now owns
+ * the destination face, so it can reveal it progressively
+ * while Last Front is dragged forward.
+ *
+ * Keep it soft so Last Back / reverse interaction retains
+ * the existing curl behaviour.
+ */
+
+.flip-page--back-cover {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+
+    background: transparent;
+
+    pointer-events: none;
+
+    transform-style:
+        preserve-3d;
+}
+
+
+.flip-page--back-cover
+.back-cover {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    opacity: 1 !important;
+
+    pointer-events: none !important;
+
+    z-index: 1;
+}
+
+
+/*
+ * BackCover normally assumes it spans a two-page spread and
+ * therefore places its inner cover at left: 50%.
+ *
+ * Inside the single PageFlip boundary, the entire boundary
+ * IS the right-side cover, so it must fill 100%.
+ */
+
+.flip-page--back-cover
+.back-cover__inner {
+    top: 0;
+
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    pointer-events: none !important;
+
+    transform:
+        translateZ(0) rotateY(0deg) !important;
+
+    transition: none !important;
+}
+
+
+/*
+ * Once the final spread has been reached, the real overlay
+ * BackCover is the only BackCover that should be visible.
+ *
+ * Keep the PageFlip boundary hidden BOTH at rest and during
+ * reverse dragging. The boundary is needed only before the
+ * forward flip completes, when the engine is not yet in
+ * flip-engine--back-cover mode.
+ *
+ * This prevents the duplicate PageFlip BackCover face from
+ * sitting above the Last Back page during reverse curl.
+ */
+
+.flip-engine--back-cover
+.flip-page--back-cover {
+    opacity: 0;
+
+    visibility: hidden;
+}
+
+
+/* =========================================================
+   BACK COVER MODE
+========================================================= */
+
+.flip-engine--back-cover {
+    top: 0;
+
+    left: -100%;
+
+    width: 200%;
+    height: 100%;
+
+    perspective:
+        2600px;
+
+    transform-style:
+        preserve-3d;
+
+    overflow:
+        visible;
+
+    z-index:
+        3000;
+
+    pointer-events:
+        none;
+}
+
+
+/* =========================================================
+   BACK COVER ABOVE PAGEFLIP
+========================================================= */
+
+.flip-engine--back-cover
+.back-cover {
+    /*
+     * Root spans the entire spread.
+     *
+     * It must not block Last Back.
+     */
+
+    pointer-events:
+        none;
+
+    z-index:
+        4000;
+}
+
+
+/*
+ * Only the actual Back Cover surface
+ * receives pointer interaction.
+ */
+
+.flip-engine--back-cover
+.back-cover__inner {
+    pointer-events:
+        auto;
+}
+
+
+/* =========================================================
+   PAGE ABOVE BACK COVER WHILE CURLING
+========================================================= */
+
+/*
+ * During reverse flipping the Last Back page
+ * must be allowed to curl over the Back Cover.
+ */
+
+.flip-engine--back-cover.flip-engine--page-flipping
+.flip-engine__book {
+    z-index:
+        5000;
+}
+
+
+/*
+ * At rest, PageFlip stays below the real cover.
+ */
+
+.flip-engine--back-cover
+.flip-engine__book {
+    z-index:
+        100;
+}
+
+
+/* =========================================================
+   KEEP PAPER DRAGGING CLEAN
+========================================================= */
+
+.flip-page-book,
+.flip-page-book * {
+    -webkit-user-select:
+        none;
+
+    user-select:
+        none;
+}
+
+
+/* =========================================================
+   PREVENT NATIVE IMAGE DRAGGING
+========================================================= */
+
+.flip-page-book img {
+    -webkit-user-drag:
+        none;
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (
+    prefers-reduced-motion: reduce
+) {
+
+    .flip-page-book {
+        scroll-behavior:
+            auto;
+    }
+
+}

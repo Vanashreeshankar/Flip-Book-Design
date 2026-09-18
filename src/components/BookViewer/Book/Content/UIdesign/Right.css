@@ -1,0 +1,886 @@
+/* =========================================================
+   RIGHT MAGAZINE PAGE
+   Typography visibility pass
+   Composition / placement intentionally unchanged
+   ========================================================= */
+
+.ui-mag-right {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  overflow: hidden;
+
+  background: #f8f0e9;
+
+  color: #171717;
+
+  isolation: isolate;
+
+  container-type: inline-size;
+}
+
+
+/* =========================================================
+   SUBTLE PAPER TEXTURE
+   ========================================================= */
+
+.ui-mag-right::after {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 100;
+
+  pointer-events: none;
+
+  opacity: 0.018;
+
+  background-image:
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.20'/%3E%3C/svg%3E");
+
+  mix-blend-mode: multiply;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.ui-mag-right-top {
+  position: absolute;
+
+  z-index: 60;
+
+  top: 5.05%;
+
+  left: 53.25%;
+  right: 6.85%;
+
+  display: flex;
+
+  align-items: flex-start;
+
+  justify-content: space-between;
+}
+
+
+/* =========================================================
+   HEADER LABEL
+   ========================================================= */
+
+.ui-mag-right-section {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 2px;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  /*
+     INCREASED.
+  */
+  font-size: 1.72cqw;
+
+  line-height: 1.45;
+
+  font-weight: 600;
+
+  letter-spacing: 0.26em;
+
+  color: #272727;
+
+  text-transform: uppercase;
+
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   PAGE NUMBER
+   ========================================================= */
+
+.ui-mag-right-page-number {
+  display: flex;
+
+  align-items: center;
+
+  gap: 2.55cqw;
+}
+
+
+/* =========================================================
+   PAGE NUMBER LINE
+   ========================================================= */
+
+.ui-mag-right-page-number i {
+  display: block;
+
+  width: 10.7cqw;
+
+  height: 1px;
+
+  background: rgba(35, 35, 35, 0.40);
+}
+
+
+/* =========================================================
+   PAGE NUMBER
+   ========================================================= */
+
+.ui-mag-right-page-number span {
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 22px;
+
+  font-weight: 400;
+
+  line-height: 1;
+
+  letter-spacing: -0.03em;
+
+  color: #171717;
+}
+
+
+/* =========================================================
+   LONG EDITORIAL DIVIDER
+   ========================================================= */
+
+.ui-mag-editorial-divider {
+  position: absolute;
+
+  z-index: 7;
+
+  top: 13.8%;
+
+  left: 57.9%;
+
+  width: 1px;
+
+  height: 68.5%;
+
+  background: rgba(45, 45, 45, 0.27);
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   ORGANIC PEACH SHAPE
+   ========================================================= */
+
+.ui-mag-phone-backdrop {
+  position: absolute;
+
+  z-index: 2;
+
+  width: 65%;
+
+  height: 43.5%;
+
+  left: -14.5%;
+
+  top: 15%;
+
+  border-radius:
+    67% 33% 47% 53% /
+    48% 58% 42% 52%;
+
+  background:
+    radial-gradient(
+      ellipse at 57% 48%,
+
+      rgba(246, 161, 138, 0.96) 0%,
+
+      rgba(245, 158, 136, 0.90) 25%,
+
+      rgba(243, 153, 132, 0.70) 48%,
+
+      rgba(241, 151, 131, 0.38) 69%,
+
+      rgba(241, 151, 131, 0) 100%
+    );
+
+  transform:
+    rotate(-5deg)
+    scale(1.02);
+
+  filter:
+    blur(0.05cqw)
+    saturate(0.88);
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   SECONDARY PEACH LIGHT AREA
+   ========================================================= */
+
+.ui-mag-phone-backdrop::after {
+  content: "";
+
+  position: absolute;
+
+  width: 78%;
+
+  height: 70%;
+
+  left: 10%;
+
+  top: 10%;
+
+  border-radius:
+    52% 48% 39% 61% /
+    61% 43% 57% 39%;
+
+  background:
+    radial-gradient(
+      ellipse at 48% 48%,
+
+      rgba(255, 181, 158, 0.30) 0%,
+
+      rgba(249, 167, 145, 0.19) 42%,
+
+      rgba(244, 157, 136, 0.07) 67%,
+
+      rgba(244, 157, 136, 0) 100%
+    );
+
+  transform:
+    rotate(7deg)
+    scale(1.06);
+
+  filter: blur(0.9cqw);
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   PHONE WRAPPER
+   ========================================================= */
+
+.ui-mag-phone-wrap {
+  position: absolute;
+
+  z-index: 20;
+
+  width: 72.5%;
+
+  left: -1.4%;
+
+  top: 14.8%;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  overflow: visible;
+
+  pointer-events: none;
+
+  isolation: isolate;
+}
+
+
+/* =========================================================
+   PHONE CONTACT SHADOW
+   ========================================================= */
+
+.ui-mag-phone-wrap::before {
+  content: "";
+
+  position: absolute;
+
+  z-index: 0;
+
+  width: 47%;
+
+  height: 11%;
+
+  left: 43%;
+
+  bottom: 3%;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      ellipse at center,
+
+      rgba(35, 27, 24, 0.34) 0%,
+
+      rgba(35, 27, 24, 0.25) 24%,
+
+      rgba(35, 27, 24, 0.14) 48%,
+
+      rgba(35, 27, 24, 0.055) 70%,
+
+      rgba(35, 27, 24, 0) 100%
+    );
+
+  filter: blur(1.05cqw);
+
+  transform:
+    translate(
+      3.8cqw,
+      1.8cqw
+    )
+    rotate(-8deg)
+    scaleX(1.28);
+
+  opacity: 0.95;
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   PHONE AMBIENT LOWER-RIGHT SHADOW
+   ========================================================= */
+
+.ui-mag-phone-wrap::after {
+  content: "";
+
+  position: absolute;
+
+  z-index: 0;
+
+  width: 58%;
+
+  height: 34%;
+
+  left: 38%;
+
+  bottom: 2%;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      ellipse at center,
+
+      rgba(38, 29, 26, 0.20) 0%,
+
+      rgba(38, 29, 26, 0.13) 25%,
+
+      rgba(38, 29, 26, 0.075) 45%,
+
+      rgba(38, 29, 26, 0.032) 64%,
+
+      rgba(38, 29, 26, 0) 100%
+    );
+
+  filter: blur(2.2cqw);
+
+  transform:
+    translate(
+      5.5cqw,
+      3.5cqw
+    )
+    rotate(-8deg)
+    scaleX(1.22);
+
+  opacity: 0.9;
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   PHONE IMAGE
+   ========================================================= */
+
+.ui-mag-phone {
+  position: relative;
+
+  z-index: 2;
+
+  display: block;
+
+  width: 100%;
+
+  height: auto;
+
+  max-width: none;
+
+  object-fit: contain;
+
+  transform:
+    rotate(-4deg)
+    scale(1.015);
+
+  transform-origin: center center;
+
+  filter:
+
+    /* 1 — tight contact */
+    drop-shadow(
+      0.15cqw
+      0.38cqw
+      0.28cqw
+      rgba(0, 0, 0, 0.22)
+    )
+
+    /* 2 — lower-right body shadow */
+    drop-shadow(
+      0.85cqw
+      1.65cqw
+      1.25cqw
+      rgba(0, 0, 0, 0.20)
+    )
+
+    /* 3 — medium soft shadow */
+    drop-shadow(
+      1.35cqw
+      2.85cqw
+      2.35cqw
+      rgba(0, 0, 0, 0.14)
+    )
+
+    /* 4 — large ambient shadow */
+    drop-shadow(
+      1.8cqw
+      4.2cqw
+      4.2cqw
+      rgba(0, 0, 0, 0.075)
+    );
+}
+
+
+/* =========================================================
+   FEATURE COLUMN
+   ========================================================= */
+
+.ui-mag-features {
+  position: absolute;
+
+  z-index: 40;
+
+  top: 22.7%;
+
+  left: 62.65%;
+
+  width: 31.35%;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 5.75cqw;
+}
+
+
+/* =========================================================
+   FEATURE ITEM
+   ========================================================= */
+
+.ui-mag-feature {
+  position: relative;
+
+  display: grid;
+
+  grid-template-columns:
+    6.25cqw
+    minmax(0, 1fr);
+
+  column-gap: 2.45cqw;
+
+  align-items: start;
+
+  min-height: 8.75cqw;
+}
+
+
+/* =========================================================
+   FIRST FEATURE CORAL LINE
+   ========================================================= */
+
+.ui-mag-feature-first::before {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+
+  top: -5.75cqw;
+
+  width: 4.7cqw;
+
+  height: 1px;
+
+  background: #ed8066;
+}
+
+
+/* =========================================================
+   FEATURE ICON
+   ========================================================= */
+
+.ui-mag-feature-icon {
+  width: 6.25cqw;
+
+  height: 6.25cqw;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  color: #151515;
+}
+
+
+/* =========================================================
+   ICON SVG
+   ========================================================= */
+
+.ui-mag-feature-icon svg {
+  width: 4.15cqw;
+
+  height: 4.15cqw;
+
+  stroke-width: 1.45;
+}
+
+
+/* =========================================================
+   FEATURE CONTENT
+   ========================================================= */
+
+.ui-mag-feature-content {
+  min-width: 0;
+
+  padding-top: 0.05cqw;
+}
+
+
+/* =========================================================
+   FEATURE TITLE
+   ========================================================= */
+
+.ui-mag-feature-content h3 {
+  margin: 0 0 1.05cqw 0;
+
+  padding: 0;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  /*
+     OLD: 2.58cqw
+     NEW: 3.25cqw
+
+     This gives the title much more presence.
+  */
+  font-size: 3.25cqw;
+
+  line-height: 1.08;
+
+  font-weight: 400;
+
+  letter-spacing: -0.012em;
+
+  color: #181818;
+
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   FEATURE DESCRIPTION
+   ========================================================= */
+
+.ui-mag-feature-content p {
+  margin: 0;
+
+  padding: 0;
+
+  font-family:
+    "Helvetica Neue",
+    Helvetica,
+    Arial,
+    sans-serif;
+
+  /*
+     OLD: 1.66cqw
+     NEW: 2.12cqw
+  */
+  font-size: 2.12cqw;
+
+  line-height: 1.42;
+
+  font-weight: 400;
+
+  letter-spacing: 0;
+
+  color: rgba(35, 35, 35, 0.78);
+
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   QUOTE
+   ========================================================= */
+
+.ui-mag-quote {
+  position: absolute;
+
+  z-index: 45;
+
+  right: 8.15%;
+
+  bottom: 8.75%;
+
+  width: 31.25%;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-start;
+}
+
+
+/* =========================================================
+   QUOTE LINE
+   ========================================================= */
+
+.ui-mag-quote-line {
+  width: 4.15cqw;
+
+  height: 1px;
+
+  margin-bottom: 1.75cqw;
+
+  background: #ed8066;
+}
+
+
+/* =========================================================
+   QUOTE TEXT
+   ========================================================= */
+
+.ui-mag-quote blockquote {
+  margin: 0;
+
+  padding: 0;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 3.10cqw;
+
+  line-height: 1.075;
+
+  font-style: italic;
+
+  font-weight: 400;
+
+  letter-spacing: -0.018em;
+
+  color: #1b1b1b;
+}
+
+
+/* =========================================================
+   SMALL PAGE
+   ========================================================= */
+
+@media (max-width: 500px) {
+
+  .ui-mag-right-section {
+    /*
+       Keep the increased visibility.
+    */
+    font-size: 1.72cqw;
+  }
+
+
+  .ui-mag-right-page-number {
+    gap: 2.4cqw;
+  }
+
+
+
+  /* =======================================================
+     DIVIDER
+     ======================================================= */
+
+  .ui-mag-editorial-divider {
+    top: 15.8%;
+
+    left: 50.7%;
+
+    height: 64.5%;
+  }
+
+
+  /* =======================================================
+     PEACH
+     ======================================================= */
+
+  .ui-mag-phone-backdrop {
+    width: 65%;
+
+    height: 43.5%;
+
+    left: -14.5%;
+
+    top: 15%;
+  }
+
+
+  /* =======================================================
+     PHONE
+     ======================================================= */
+
+  .ui-mag-phone-wrap {
+    width: 72.5%;
+
+    left: -1.4%;
+
+    top: 14.8%;
+
+    overflow: visible;
+  }
+
+
+  .ui-mag-phone {
+    transform:
+      rotate(-4deg)
+      scale(1.015);
+
+    filter:
+
+      drop-shadow(
+        0.15cqw
+        0.38cqw
+        0.28cqw
+        rgba(0, 0, 0, 0.22)
+      )
+
+      drop-shadow(
+        0.85cqw
+        1.65cqw
+        1.25cqw
+        rgba(0, 0, 0, 0.20)
+      )
+
+      drop-shadow(
+        1.35cqw
+        2.85cqw
+        2.35cqw
+        rgba(0, 0, 0, 0.14)
+      )
+
+      drop-shadow(
+        1.8cqw
+        4.2cqw
+        4.2cqw
+        rgba(0, 0, 0, 0.075)
+      );
+  }
+
+
+  /* =======================================================
+     FEATURES
+     ======================================================= */
+
+  .ui-mag-features {
+    top: 22.9%;
+
+    left: 62.5%;
+
+    width: 31.5%;
+
+    gap: 5.4cqw;
+  }
+
+
+  .ui-mag-feature {
+    grid-template-columns:
+      6cqw
+      minmax(0, 1fr);
+
+    column-gap: 2.2cqw;
+
+    min-height: 8.5cqw;
+  }
+
+
+  .ui-mag-feature-icon {
+    width: 6cqw;
+
+    height: 6cqw;
+  }
+
+
+  .ui-mag-feature-icon svg {
+    width: 4cqw;
+
+    height: 4cqw;
+  }
+
+
+  /* =======================================================
+     FEATURE TITLE
+     ======================================================= */
+
+  .ui-mag-feature-content h3 {
+    /*
+       IMPORTANT:
+       Do not revert to the old 2.5cqw value.
+    */
+    font-size: 3.15cqw;
+
+    margin-bottom: 1.05cqw;
+  }
+
+
+  /* =======================================================
+     FEATURE DESCRIPTION
+     ======================================================= */
+
+  .ui-mag-feature-content p {
+    font-size: 2.05cqw;
+  }
+
+
+  /* =======================================================
+     QUOTE
+     ======================================================= */
+
+  .ui-mag-quote {
+    right: 8%;
+
+    bottom: 8%;
+
+    width: 31.5%;
+  }
+
+
+  .ui-mag-quote blockquote {
+    font-size: 3cqw;
+  }
+}
