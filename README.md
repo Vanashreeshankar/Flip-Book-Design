@@ -85,7 +85,3 @@ The project combines:
 - Spline
 - Vite
 
-
-├── assets/
-├── styles/
-└── ...
